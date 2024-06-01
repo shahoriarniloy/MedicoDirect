@@ -1,8 +1,9 @@
+import '../../App.css';
 
 const Footer = () => {
     return (
         <div>
-            <footer className="py-6 dark:bg-gray-100 dark:text-gray-900 ">
+            <footer className=" roboto-regular py-6 dark:bg-gray-100 dark:text-gray-900 ">
 	<div className="container px-6 mx-auto space-y-6 divide-y dark:divide-gray-600 md:space-y-12 divide-opacity-50">
 		<div className="grid grid-cols-12">
 			<div className="pb-6 col-span-full md:pb-0 md:col-span-6">
