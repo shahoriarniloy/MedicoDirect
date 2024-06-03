@@ -9,6 +9,7 @@ import Dashboard from "../Layout/Dashboard";
 import CreateMedicine from "../Pages/Dashboard/Medicine/Add";
 import MedicinesIndex from "../Pages/Dashboard/Medicine/Index";
 import CreateCategory from "../Pages/Dashboard/Category/CreateCategory";
+import CategoryIndex from "../Pages/Dashboard/Category/CategoryIndex";
 
   export const router = createBrowserRouter([
     {
@@ -36,8 +37,8 @@ import CreateCategory from "../Pages/Dashboard/Category/CreateCategory";
             element: <CreateMedicine></CreateMedicine>
         },
         {
-            path:"/category/create",
-            element: <CreateCategory></CreateCategory>
+            path:"/category/index",
+            element: <CategoryIndex></CategoryIndex>
         }
       ]
     },
