@@ -1,20 +1,27 @@
 import { useState } from 'react';
 import axios from 'axios';
-import '../../../App.css'
+import '../../../App.css';
 
 const CreateCategory = () => {
   const [categoryName, setCategoryName] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
 
   const handleChange = (e) => {
-    setCategoryName(e.target.value);
+    const { name, value } = e.target;
+    if (name === 'name') {
+      setCategoryName(value);
+    } else if (name === 'imageUrl') {
+      setImageUrl(value);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/categories', { name: categoryName });
+      await axios.post('http://localhost:5000/categories', { name: categoryName, imageUrl: imageUrl });
       alert('Category created successfully');
       setCategoryName('');
+      setImageUrl('');
     } catch (error) {
       console.error('There was an error creating the category!', error);
     }
@@ -30,6 +37,16 @@ const CreateCategory = () => {
             type="text"
             name="name"
             value={categoryName}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700">Image URL</label>
+          <input
+            type="text"
+            name="imageUrl"
+            value={imageUrl}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
