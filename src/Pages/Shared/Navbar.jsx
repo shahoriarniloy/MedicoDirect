@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../../App.css';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
@@ -23,13 +24,13 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-10 roboto-regular ${navbar ? 'bg-blue-600' : 'bg-transparent'} transition duration-300`}>
+    <nav className={`fixed w-full z-10 roboto-regular ${navbar ? 'bg-blue-600' : 'bg-blue-600'} transition duration-300`}>
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center">
           <span className="text-white text-2xl font-bold ml-2">MedicoDirec<span className="text-4xl">+</span></span>
         </div>
         <div className="hidden md:flex space-x-6 items-center">
-          <a href="#home" className="text-white hover:text-gray-300">Home</a>
+          <Link to="/" className="text-white hover:text-gray-300">Home</Link>
           <a href="#shop" className="text-white hover:text-gray-300">Shop</a>
           <div className="relative">
             <button onClick={toggleDropdown} className="text-white hover:text-gray-300">Languages</button>
@@ -48,7 +49,7 @@ const Navbar = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l1.4-6H6.6M7 13a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z" />
             </svg>
           </a>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700">Join Us</button>
+          <Link to="/login" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700">Join Us</Link>
         </div>
         <div className="md:hidden">
           <button className="text-white focus:outline-none">

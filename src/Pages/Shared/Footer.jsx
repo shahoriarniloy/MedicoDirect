@@ -1,4 +1,5 @@
 import '../../App.css';
+import { ToastContainer } from 'react-toastify';
 
 const Footer = () => {
     return (
@@ -89,6 +90,7 @@ const Footer = () => {
 		</div>
 	</div>
 </footer>
+<ToastContainer />
             
         </div>
     );
