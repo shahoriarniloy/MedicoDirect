@@ -75,7 +75,7 @@ const MedicinesIndex = () => {
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         contentLabel="Medicine Details"
-        className="modal bg-white rounded-lg shadow-lg p-8 max-w-md mx-auto mt-20 relative"
+        className="modal bg-white rounded-lg shadow-lg p-8 max-w-lg mx-auto mt-20 relative"
         overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-50"
       >
         <button onClick={closeModal} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
@@ -83,13 +83,27 @@ const MedicinesIndex = () => {
         </button>
         {selectedMedicine && (
           <div>
-            <h2 className="text-2xl font-bold mb-4">{selectedMedicine.productName}</h2>
-            <img src={selectedMedicine.imageUrl} alt={selectedMedicine.productName} className="w-full h-auto mb-4" />
-            <p><strong>Brand Name:</strong> {selectedMedicine.brandName}</p>
-            <p><strong>Generic Name:</strong> {selectedMedicine.genericName}</p>
-            <p><strong>Dosage Form:</strong> {selectedMedicine.dosageForm}</p>
-            <button onClick={closeModal} className="mt-4 px-4 py-2 bg-red-500 text-white rounded">Close</button>
-          </div>
+          <h2 className="text-2xl font-bold mb-4">{selectedMedicine.productName}</h2>
+          <img src={selectedMedicine.imageUrl} alt={selectedMedicine.productName} className="w-full h-auto mb-4" />
+          <p><strong>Brand Name:</strong> {selectedMedicine.brandName}</p>
+          <p><strong>Generic Name:</strong> {selectedMedicine.genericName}</p>
+          <p><strong>Dosage Form:</strong> {selectedMedicine.dosageForm}</p>
+          <p><strong>Strength:</strong> {selectedMedicine.strength}</p>
+          <p><strong>Packaging:</strong> {selectedMedicine.packaging}</p>
+          <p><strong>Price:</strong> {selectedMedicine.price}</p>
+          <p><strong>SKU:</strong> {selectedMedicine.sku}</p>
+          <p><strong>Manufacturer:</strong> {selectedMedicine.manufacturer}</p>
+          <p><strong>Expiration Date:</strong> {selectedMedicine.expirationDate}</p>
+          <p><strong>Description:</strong> {selectedMedicine.description}</p>
+          <p><strong>Indications:</strong> {selectedMedicine.indications}</p>
+          <p><strong>Dosage Instructions:</strong> {selectedMedicine.dosageInstructions}</p>
+          <p><strong>Side Effects:</strong> {selectedMedicine.sideEffects}</p>
+          <p><strong>Warnings:</strong> {selectedMedicine.warnings}</p>
+          <p><strong>Contraindications:</strong> {selectedMedicine.contraindications}</p>
+          <p><strong>Storage Instructions:</strong> {selectedMedicine.storageInstructions}</p>
+          <p><strong>Ingredients:</strong> {selectedMedicine.ingredients}</p>
+          <button onClick={closeModal} className="mt-4 px-4 py-2 bg-red-500 text-white rounded">Close</button>
+        </div>
         )}
       </Modal>
     </div>
