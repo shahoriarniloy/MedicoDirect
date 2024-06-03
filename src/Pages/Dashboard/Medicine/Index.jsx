@@ -1,9 +1,15 @@
-import  { useState, useEffect } from 'react';
+import  { useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faShoppingCart, faTimes } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import Modal from 'react-modal';
 import '../../../App.css'
+import UseAuth from '../../../Hooks/UseAuth';
+import Swal from 'sweetalert2';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 Modal.setAppElement('#root');
@@ -40,6 +46,68 @@ const MedicinesIndex = () => {
     setIsModalOpen(false);
     setSelectedMedicine(null);
   };
+const {user} = UseAuth();
+const navigate = useNavigate();
+const loaction = useLocation();
+
+const handleAddToCart = medicine => {
+  if (user && user.email) {
+    const { productName, brandName, genericName, strength, packaging, price, image, manufacturer, expirationDate, description, indications, dosageInstructions, sideEffects, warnings, contraindications, storageInstructions, ingredients, category, _id } = medicine;
+
+    const cartItem = {
+      menuId: _id,
+      email: user.email,
+      productName, 
+      brandName, 
+      genericName, 
+      strength, 
+      packaging, 
+      price, 
+      image, 
+      manufacturer, 
+      expirationDate, 
+      description, 
+      indications, 
+      dosageInstructions, 
+      sideEffects, 
+      warnings, 
+      contraindications, 
+      storageInstructions, 
+      ingredients, 
+      category
+    };
+
+    axios.post('http://localhost:5000/carts', cartItem)
+      .then(res => {
+        // console.log('Response from server:', res); 
+        if (res.data && res.data.insertedId
+        ) {
+          toast.success('Added to Cart');
+        } else {
+          toast.error('Failed to add to cart');
+        }
+      })
+      .catch(error => {
+        console.error('Error adding to cart:', error);
+        toast.error('Failed to add to cart');
+      });
+  } else {
+    Swal.fire({
+      title: "Log In First",
+      text: "You must be logged in to shop from us. Do you want to log in now?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Log In"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate('/login', { state: { from: location } });
+      }
+    });
+  }
+};
+
 
   return (
     <div className="container mx-auto p-4 roboto-regular">
@@ -48,6 +116,7 @@ const MedicinesIndex = () => {
         <thead>
           <tr>
             <th className="px-4 py-2 border-b">Product Name</th>
+            <th className="px-4 py-2 border-b">image</th>
             <th className="px-4 py-2 border-b">Brand Name</th>
             <th className="px-4 py-2 border-b">Category</th>
             <th className="px-4 py-2 border-b">Actions</th>
@@ -57,13 +126,16 @@ const MedicinesIndex = () => {
           {medicines.map((medicine) => (
             <tr key={medicine._id} className="text-center">
               <td className="px-4 py-2 border-b">{medicine.productName}</td>
+              <td className="px-4 py-2 border-b"><img src={medicine.image} alt="" /></td>
               <td className="px-4 py-2 border-b">{medicine.brandName}</td>
               <td className="px-4 py-2 border-b">{medicine.category}</td>
               <td className="px-4 py-2 border-b">
                 <button onClick={() => openModal(medicine._id)} className="text-blue-500 hover:text-blue-700 mx-2">
                   <FontAwesomeIcon icon={faEye} />
                 </button>
-                <button className="text-green-500 hover:text-green-700 mx-2">
+                <button 
+                onClick={()=>handleAddToCart(medicine)}
+                className="text-green-500 hover:text-green-700 mx-2">
                   <FontAwesomeIcon icon={faShoppingCart} />
                 </button>
               </td>

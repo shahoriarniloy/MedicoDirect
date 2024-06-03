@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet";
 
+
 const Login = () => {
     const location = useLocation();
     const { signInUser } = useContext(AuthContext);
@@ -17,6 +18,7 @@ const Login = () => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const from = location.state?.from?.pathname || "/";
 
     const googleProvider = new GoogleAuthProvider();
 
@@ -54,7 +56,7 @@ const Login = () => {
             const result = await signInWithPopup(auth, googleProvider);
             toast.success("Signed In");
             setUser(result.user);
-            navigate(location?.state?.from || '/');
+            navigate(from, {replace:true});
         } catch (error) {
             setError("Failed to sign in with Google");
             toast.error("Please check your credential or try again later");
