@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import '../../App.css';
-import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const location = useLocation();
 
   const changeBackground = () => {
     if (window.scrollY >= 80) {
@@ -30,10 +31,22 @@ const Navbar = () => {
           <span className="text-white text-2xl font-bold ml-2">MedicoDirec<span className="text-4xl">+</span></span>
         </div>
         <div className="hidden md:flex space-x-6 items-center">
-          <Link to="/" className="text-white hover:text-gray-300">Home</Link>
-          <a href="#shop" className="text-white hover:text-gray-300">Shop</a>
+          <Link
+            to="/"
+            className={`text-white hover:text-gray-300 ${location.pathname === '/' ? 'border-b-2 border-white' : ''}`}
+          >
+            Home
+          </Link>
+          <Link
+            to="/medicine/index"
+            className={`text-white hover:text-gray-300 ${location.pathname === '/medicine/index' ? 'border-b-2 border-white' : ''}`}
+          >
+            Shop
+          </Link>
           <div className="relative">
-            <button onClick={toggleDropdown} className="text-white hover:text-gray-300">Languages</button>
+            <button onClick={toggleDropdown} className="text-white hover:text-gray-300">
+              Languages
+            </button>
             {dropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-20">
                 <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Bengali</a>
@@ -49,7 +62,12 @@ const Navbar = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l1.4-6H6.6M7 13a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z" />
             </svg>
           </a>
-          <Link to="/login" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700">Join Us</Link>
+          <Link
+            to="/login"
+            className={`bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 ${location.pathname === '/login' ? 'border-b-2 border-white' : ''}`}
+          >
+            Join Us
+          </Link>
         </div>
         <div className="md:hidden">
           <button className="text-white focus:outline-none">

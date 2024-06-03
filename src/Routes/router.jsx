@@ -6,8 +6,9 @@ import Home from "../Pages/Home/Home";
 import Login from "../Login/Login";
 import Register from "../Login/Register";
 import Dashboard from "../Layout/Dashboard";
-import CreateMedicine from "../Pages/Medicine/Add";
-import MedicinesIndex from "../Pages/Medicine/Index";
+import CreateMedicine from "../Pages/Dashboard/Medicine/Add";
+import MedicinesIndex from "../Pages/Dashboard/Medicine/Index";
+import CreateCategory from "../Pages/Dashboard/Category/CreateCategory";
 
   export const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ import MedicinesIndex from "../Pages/Medicine/Index";
         {
             path:"/medicine/create",
             element: <CreateMedicine></CreateMedicine>
+        },
+        {
+            path:"/category/create",
+            element: <CreateCategory></CreateCategory>
         }
       ]
     },

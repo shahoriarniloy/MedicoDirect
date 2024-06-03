@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faShoppingCart, faTimes } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import Modal from 'react-modal';
+import '../../../App.css'
 
 
 Modal.setAppElement('#root');
@@ -41,8 +42,8 @@ const MedicinesIndex = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Medicines List</h2>
+    <div className="container mx-auto p-4 roboto-regular">
+      <h2 className="text-2xl font-bold mb-4 mt-16 text-center text-blue-600">Medicines List</h2>
       <table className="min-w-full bg-white border border-gray-200">
         <thead>
           <tr>
@@ -82,7 +83,7 @@ const MedicinesIndex = () => {
           <FontAwesomeIcon icon={faTimes} size="lg" />
         </button>
         {selectedMedicine && (
-          <div>
+          <div className='roboto-regular'>
           <h2 className="text-2xl font-bold mb-4">{selectedMedicine.productName}</h2>
           <img src={selectedMedicine.imageUrl} alt={selectedMedicine.productName} className="w-full h-auto mb-4" />
           <p><strong>Brand Name:</strong> {selectedMedicine.brandName}</p>
