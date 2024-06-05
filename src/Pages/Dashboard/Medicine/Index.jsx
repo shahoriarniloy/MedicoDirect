@@ -10,6 +10,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAxiosSecure from '../../../Hooks/UseAxiosSecure';  
+import UseCart from '../../../Hooks/UseCart';
 
 Modal.setAppElement('#root');
 
@@ -17,7 +18,8 @@ const MedicinesIndex = () => {
   const [medicines, setMedicines] = useState([]);
   const [selectedMedicine, setSelectedMedicine] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const axiosSecure = useAxiosSecure();  
+  const axiosSecure = useAxiosSecure(); 
+  const [,  refetch]= UseCart(); 
 
   useEffect(() => {
     const fetchMedicines = async () => {
@@ -71,6 +73,7 @@ const MedicinesIndex = () => {
         .then(res => {
           if (res.data && res.data.insertedId) {
             toast.success('Added to Cart');
+            refetch();
           } else {
             toast.error('Failed to add to cart');
           }

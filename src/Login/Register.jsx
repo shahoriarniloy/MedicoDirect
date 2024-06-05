@@ -8,8 +8,10 @@ import { AuthContext } from "../providers/AuthProvider";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import '../App.css'
+import UseAxiosPublic from "../Hooks/UseAxiosPublic";
 
 const Register = () => {
+    const axiosPublic = UseAxiosPublic();
     const location = useLocation();
     const navigate = useNavigate();
     const { updateUserProfile } = useContext(AuthContext);
@@ -44,6 +46,18 @@ const Register = () => {
         try {
             const result = await createUserWithEmailAndPassword(auth, email, password);
             await updateUserProfile(name, url);
+
+            const userInfo={
+                name:name,
+                email: email,
+
+            }
+            axiosPublic.post('users',userInfo)
+            .then(res=>{
+                if(res.data.insertedId)
+                    {
+console.log('user added to database');                    }
+            })
 
             // const user = { email, name };
             // fetch('http://localhost:5000/user', {

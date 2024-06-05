@@ -10,6 +10,9 @@ import CreateMedicine from "../Pages/Dashboard/Medicine/Add";
 import MedicinesIndex from "../Pages/Dashboard/Medicine/Index";
 import CreateCategory from "../Pages/Dashboard/Category/CreateCategory";
 import CategoryIndex from "../Pages/Dashboard/Category/CategoryIndex";
+import AdminCart from "../Pages/Dashboard/AdminCart";
+import CartPayment from '../Pages/CartPayment'
+import UserIndex from "../Pages/Dashboard/UserIndex";
 
   export const router = createBrowserRouter([
     {
@@ -39,6 +42,10 @@ import CategoryIndex from "../Pages/Dashboard/Category/CategoryIndex";
         {
             path:"/category/index",
             element: <CategoryIndex></CategoryIndex>
+        }, 
+        {
+            path:"/cart/payment",
+            element: <CartPayment></CartPayment>
         }
       ]
     },
@@ -47,8 +54,14 @@ import CategoryIndex from "../Pages/Dashboard/Category/CategoryIndex";
         element: <Dashboard></Dashboard>,
         children:[
             {
-                path:'cart'
+                path:'/dashboard',
+                element: <AdminCart></AdminCart>
+            },
+            {
+                path:'/dashboard/users',
+                element: <UserIndex></UserIndex>
             }
+           
         ]
 
     }

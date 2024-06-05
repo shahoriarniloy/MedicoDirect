@@ -7,9 +7,11 @@ import { AuthContext } from "../providers/AuthProvider";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet";
+import UseAxiosPublic from "../Hooks/UseAxiosPublic";
 
 
 const Login = () => {
+    const axiosPublic = UseAxiosPublic();
     const location = useLocation();
     const { signInUser } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -40,7 +42,9 @@ const Login = () => {
             const result = await signInUser(email, password);
             toast.success("Signed In");
             e.target.reset();
-            navigate(location?.state?.from || '/');
+            // navigate(location?.state?.from || '/');
+            navigate(from, {replace:true});
+
         } catch (error) {
             setError("Invalid Credentials");
             toast.error("Invalid Credentials");
@@ -56,6 +60,14 @@ const Login = () => {
             const result = await signInWithPopup(auth, googleProvider);
             toast.success("Signed In");
             setUser(result.user);
+            const userInfo ={
+                email: result.user?.email,
+                name: result.user?.displayName
+            }
+            axiosPublic.post('/users',userInfo)
+            .then(res=>{
+                console.log(res.data);
+            })
             navigate(from, {replace:true});
         } catch (error) {
             setError("Failed to sign in with Google");

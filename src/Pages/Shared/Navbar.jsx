@@ -12,6 +12,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { user, logOut } = UseAuth(); 
   const [cart]=UseCart();
+  
 
   const changeBackground = () => {
     if (window.scrollY >= 80) {
@@ -76,7 +77,7 @@ const Navbar = () => {
             )}
           </div>
           <div className='flex'>
-          <Link to="#cart" className="text-white hover:text-gray-300">
+          <Link to="/cart/payment" className="text-white hover:text-gray-300">
             <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l1.4-6H6.6M7 13a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z" />
             </svg>
