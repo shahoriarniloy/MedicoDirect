@@ -27,6 +27,20 @@ const UserIndex = () => {
             });
     };
 
+    const handleMakeSeller = user => {
+        axiosSecure.patch(`/users/seller/${user._id}`)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: `Name: ${user.name} Email: ${user.email} is a Seller Now`,
+                        text: "New Seller Added",
+                        icon: "success"
+                    });
+                    refetch();
+                }
+            });
+    };
+
     const handleDeleteUser = user => {
         Swal.fire({
             title: "Are you sure?",
@@ -92,7 +106,7 @@ const UserIndex = () => {
                                 <td className="px-3 py-2">
                                     <div className='h-fit py-4 mx-2 flex flex-col gap-2'>
                                         <button onClick={() => handleMakeAdmin(user)} className='bg-blue-500 rounded-lg text-white w-36'>Make Admin</button>
-                                        <button className='bg-blue-500 rounded-lg text-white w-36'>Make Seller</button>
+                                        <button onClick={()=>  handleMakeSeller(user)} className='bg-blue-500 rounded-lg text-white w-36'>Make Seller</button>
                                         <button className='bg-blue-500 rounded-lg text-white w-36'>Make User</button>
                                         <button onClick={() => handleDeleteUser(user)} className='bg-red-500 rounded-lg text-white w-36'>Delete</button>
                                     </div>
