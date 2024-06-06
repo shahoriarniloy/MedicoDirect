@@ -1,16 +1,21 @@
 import { useState, useContext } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../providers/AuthProvider";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import '../App.css'
+import '../App.css';
 import UseAxiosPublic from "../Hooks/UseAxiosPublic";
+import { useForm } from "react-hook-form";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const Register = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const axiosPublic = UseAxiosPublic();
     const location = useLocation();
     const navigate = useNavigate();
@@ -18,59 +23,27 @@ const Register = () => {
     const [registerError, setRegisterError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
-    const handleRegister = async (e) => {
-        e.preventDefault();
-        const name = e.target.name.value;
-        const email = e.target.email.value;
-        const url = e.target.url.value;
-        const password = e.target.password.value;
-
-        const uppercaseRegex = /[A-Z]/;
-        const lowercaseRegex = /[a-z]/;
-
-        if (password.length < 6) {
-            setRegisterError('Password must be at least 6 characters long');
-            return;
-        }
-
-        if (!uppercaseRegex.test(password)) {
-            setRegisterError('Password must contain an uppercase letter');
-            return;
-        }
-
-        if (!lowercaseRegex.test(password)) {
-            setRegisterError('Password must contain a lowercase letter');
-            return;
-        }
+    const onSubmit = async (data) => {
+        const { name, email, password, image } = data;
+        const file = image[0];
 
         try {
+            const formData = new FormData();
+            formData.append('image', file);
+
+            const imageRes = await axiosPublic.post(image_hosting_api, formData, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            });
+
+            const imageUrl = imageRes.data.data.url;
+
             const result = await createUserWithEmailAndPassword(auth, email, password);
-            await updateUserProfile(name, url);
+            await updateProfile(result.user, { displayName: name, photoURL: imageUrl });
 
-            const userInfo={
-                name:name,
-                email: email,
+            await updateUserProfile(name, imageUrl);
 
-            }
-            axiosPublic.post('users',userInfo)
-            .then(res=>{
-                if(res.data.insertedId)
-                    {
-console.log('user added to database');                    }
-            })
-
-            // const user = { email, name };
-            // fetch('http://localhost:5000/user', {
-            //     method: 'POST',
-            //     headers: { 'content-type': 'application/json' },
-            //     body: JSON.stringify(user)
-            // })
-            //     .then(res => res.json())
-            //     .then(data => {
-            //         if (data.insertedId) {
-            //             console.log('User added to Database');
-            //         }
-            //     });
+            const userInfo = { name, email, photoURL: imageUrl };
+            await axiosPublic.post('users', userInfo);
 
             navigate(location?.state ? location.state : '/');
             toast.success("Registered successfully");
@@ -86,43 +59,71 @@ console.log('user added to database');                    }
                 <title>Sign Up</title>
             </Helmet>
             <div className="bg-white shadow-lg rounded-lg p-8 w-1/2 py-24 px-16 roboto-regular">
-            <h1 className="text-6xl text-blue-500 font-bold mb-6 text-center">MedicoDirect</h1>
-
+                <h1 className="text-6xl text-blue-500 font-bold mb-6 text-center">MedicoDirect</h1>
                 <h1 className="text-3xl font-bold mb-6 text-center">Create an Account</h1>
-                <form onSubmit={handleRegister} className="space-y-4 text-xl px-36">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-xl px-36">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Your Name:</span>
                         </label>
-                        <input type="text" name="name" placeholder="Enter your name" className="input input-bordered w-full" required />
+                        <input 
+                            type="text" 
+                            {...register("name", { required: "Name is required" })} 
+                            placeholder="Enter your name" 
+                            className="input input-bordered w-full" 
+                        />
+                        {errors.name && <p className="text-red-500">{errors.name.message}</p>}
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email:</span>
                         </label>
-                        <input type="email" name="email" placeholder="Enter your email" className="input input-bordered w-full" required />
+                        <input 
+                            type="email" 
+                            {...register("email", { required: "Email is required" })} 
+                            placeholder="Enter your email" 
+                            className="input input-bordered w-full" 
+                        />
+                        {errors.email && <p className="text-red-500">{errors.email.message}</p>}
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Photo URL:</span>
+                            <span className="label-text">Upload Photo:</span>
                         </label>
-                        <input type="text" name="url" placeholder="Enter your photo URL" className="input input-bordered w-full" required />
+                        <input 
+                            type="file" 
+                            {...register("image", { required: "Image is required" })} 
+                            className="input input-bordered w-full" 
+                        />
+                        {errors.image && <p className="text-red-500">{errors.image.message}</p>}
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Password:</span>
                         </label>
                         <div className="relative">
-                            <input type={showPassword ? "text" : "password"} name="password" placeholder="Enter your password" className="input input-bordered w-full pr-12" required />
+                            <input 
+                                type={showPassword ? "text" : "password"} 
+                                {...register("password", {
+                                    required: "Password is required",
+                                    minLength: { value: 6, message: "Password must be at least 6 characters long" },
+                                    validate: {
+                                        hasUpperCase: value => /[A-Z]/.test(value) || "Password must contain an uppercase letter",
+                                        hasLowerCase: value => /[a-z]/.test(value) || "Password must contain a lowercase letter"
+                                    }
+                                })} 
+                                placeholder="Enter your password" 
+                                className="input input-bordered w-full pr-12" 
+                            />
                             <button type="button" className="absolute right-3 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(!showPassword)}>
                                 {showPassword ? <FaEyeSlash /> : <FaEye />}
                             </button>
                         </div>
+                        {errors.password && <p className="text-red-500">{errors.password.message}</p>}
                     </div>
                     {registerError && <p className="text-red-500 text-center">{registerError}</p>}
                     <div className="form-control mt-6 flex justify-center">
-                        {/* <button type="" className="btn btn-primary w-full">Create Account</button> */}
-                        <button type="submit" className="px-8 w-1/2 py-3 font-semibold rounded bg-blue-500  text-white">Create Account</button>
+                        <button type="submit" className="px-8 w-1/2 py-3 font-semibold rounded bg-blue-500 text-white">Create Account</button>
                     </div>
                 </form>
                 <div className="text-center mt-4">

@@ -39,10 +39,7 @@ import UserIndex from "../Pages/Dashboard/UserIndex";
             path:"/medicine/create",
             element: <CreateMedicine></CreateMedicine>
         },
-        {
-            path:"/category/index",
-            element: <CategoryIndex></CategoryIndex>
-        }, 
+        
         {
             path:"/cart/payment",
             element: <CartPayment></CartPayment>
@@ -54,13 +51,17 @@ import UserIndex from "../Pages/Dashboard/UserIndex";
         element: <Dashboard></Dashboard>,
         children:[
             {
-                path:'/dashboard',
+                path:'/dashboard/admin/payments',
                 element: <AdminCart></AdminCart>
             },
             {
                 path:'/dashboard/users',
                 element: <UserIndex></UserIndex>
-            }
+            },
+            {
+                path:"dashboard/category/index",
+                element: <CategoryIndex></CategoryIndex>
+            },
            
         ]
 

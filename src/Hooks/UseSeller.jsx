@@ -2,26 +2,26 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from './UseAxiosSecure';
 import UseAuth from './UseAuth';
 
-const UseAdmin = () => {
+const UseSeller = () => {
     const { user } = UseAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: isAdmin, isPending: isAdminLoading, error } = useQuery({
-        queryKey: [user?.email, 'isAdmin'],
+    const { data: isSeller = false, isLoading, error } = useQuery({
+        queryKey: [user?.email, 'isSeller'],
         queryFn: async () => {
             if (!user?.email) return false;  
-            const res = await axiosSecure.get(`/user/admin/${user.email}`);
+            const res = await axiosSecure.get(`/user/seller/${user.email}`);
             // console.log(res.data);
-            return res.data.admin;
+            return res.data.seller;
         },
         enabled: !!user?.email, 
     });
 
     if (error) {
-        console.error('Error fetching admin status:', error);
+        console.error('Error fetching seller status:', error);
     }
 
-    return [isAdmin, isAdminLoading];
+    return [isSeller, isLoading];
 };
 
-export default UseAdmin;
+export default UseSeller;
