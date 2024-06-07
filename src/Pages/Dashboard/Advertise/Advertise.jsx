@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faShoppingCart, faTimes } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
@@ -10,33 +10,36 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAxiosSecure from '../../../Hooks/UseAxiosSecure';  
-import UseCart from '../../../Hooks/UseCart';
+import { useQuery } from '@tanstack/react-query';
+import { FaPlus } from 'react-icons/fa';
+import { Helmet } from 'react-helmet';
 
 Modal.setAppElement('#root');
 
-const MedicinesIndex = () => {
-  const [medicines, setMedicines] = useState([]);
+const Advertise = () => {
   const [selectedMedicine, setSelectedMedicine] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const axiosSecure = useAxiosSecure(); 
-  const [,  refetch]= UseCart(); 
 
-  useEffect(() => {
-    const fetchMedicines = async () => {
+  const {user}= UseAuth();
+
+  const axiosSecure = useAxiosSecure();
+  const { data: meds = [], refetch } = useQuery({
+    queryKey: ['meds'],
+    queryFn: async () => {
       try {
-        const response = await axiosSecure.get('/medicines');
-        setMedicines(response.data);
+        const res = await axiosSecure.get(`/seller/medicines/${user.email}`);
+        return res.data;
       } catch (error) {
         console.error('Error fetching medicines:', error);
+        return []; 
       }
-    };
-
-    fetchMedicines();
-  }, []);
+    }
+  });
 
   const openModal = async (medicineId) => {
     try {
       const response = await axiosSecure.get(`/medicines/${medicineId}`);
+
       setSelectedMedicine(response.data);
       setIsModalOpen(true);
     } catch (error) {
@@ -49,82 +52,54 @@ const MedicinesIndex = () => {
     setSelectedMedicine(null);
   };
 
-  const { user } = UseAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
+  const handleRequestAdvertisement = async (med) => {
+    try {
+        await axiosSecure.put(`/medicine-advertise-status/${med._id}`);
 
-  const handleAddToCart = (medicine) => {
-    if (user && user.email) {
-      const {
-        itemName,itemGenericName,shortDescription, category,company,massUnit,perUnitPrice,discountPercentage,sellerEmail,sellerName,image,price, _id
-      } = medicine;
-
-      const cartItem = {
-        menuId: _id,
-        email: user.email,
-        itemName,itemGenericName,shortDescription, category,company,massUnit,perUnitPrice,discountPercentage,sellerEmail,sellerName,image,price
-      };
-
-      axiosSecure.post('/carts', cartItem)
-        .then(res => {
-          console.log(res.data);
-          if (res.data && res.data.result1.insertedId) {
-            toast.success('Added to Cart');
-            refetch();
-          } else {
-            toast.error('Failed to add to cart');
-          }
-        })
-        .catch(error => {
-          console.error('Error adding to cart:', error);
-          toast.error('Failed to add to cart');
-        });
-    } else {
-      Swal.fire({
-        title: "Log In First",
-        text: "You must be logged in to shop from us. Do you want to log in now?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, Log In"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          navigate('/login', { state: { from: location } });
-        }
+      await axiosSecure.post(`/advertisement`, {
+        medicineId: med._id,
+        itemName: med.itemName,
+        category:med.category,
+        description:med.description,
+        company:med.company,
+        userEmail: user.email,
       });
+      toast.success('Advertisement Requested');
+    } catch (error) {
+      console.error('Error requesting advertisement:', error);
+      toast.error('Failed to request advertisement. Please try again later.');
     }
   };
 
   return (
     <div className="container mx-auto p-4 roboto-regular">
       <h2 className="text-2xl font-bold mb-4 mt-16 text-center text-blue-600">Medicines List</h2>
+
       <table className="min-w-full bg-white border border-gray-200">
         <thead>
           <tr>
             <th className="px-4 py-2 border-b">Product Name</th>
             <th className="px-4 py-2 border-b">Image</th>
-            <th className="px-4 py-2 border-b"> Name</th>
+            <th className="px-4 py-2 border-b"> Company</th>
             <th className="px-4 py-2 border-b">Category</th>
             <th className="px-4 py-2 border-b">Actions</th>
           </tr>
         </thead>
         <tbody>
-          {medicines.map((medicine) => (
-            <tr key={medicine._id} className="text-center">
-              <td className="px-4 py-2 border-b">{medicine.itemName}</td>
-              <td className="px-4 py-2 border-b"><img src={medicine.image} style={{ height: '200px' ,width:'auto'}} alt="" /></td>
-              <td className="px-4 py-2 border-b">{medicine.brandName}</td>
-              <td className="px-4 py-2 border-b">{medicine.category}</td>
+          {meds.medicines && meds.medicines.map((med) => (
+            <tr key={med._id} className="text-center">
+              <td className="px-4 py-2 border-b">{med.itemName}</td>
+              <td className="h-48 w-auto px-4 py-2 border-b">
+                <img src={med.image} alt="" style={{ height: '100px' }} />
+              </td>
+              <td className="px-4 py-2 border-b">{med.company}</td>
+              <td className="px-4 py-2 border-b">{med.category}</td>
               <td className="px-4 py-2 border-b">
-                <button onClick={() => openModal(medicine._id)} className="text-blue-500 hover:text-blue-700 mx-2">
+                <button onClick={() => openModal(med._id)} className="text-blue-500 hover:text-blue-700 mx-2">
                   <FontAwesomeIcon icon={faEye} />
                 </button>
-                <button 
-                  onClick={() => handleAddToCart(medicine)}
-                  className="text-green-500 hover:text-green-700 mx-2"
-                >
-                  <FontAwesomeIcon icon={faShoppingCart} />
+                <button onClick={() => handleRequestAdvertisement(med)} className="text-green-500 hover:text-green-700 mx-2">
+                  Request Advertisement
                 </button>
               </td>
             </tr>
@@ -145,7 +120,7 @@ const MedicinesIndex = () => {
         {selectedMedicine && (
           <div className='roboto-regular'>
             <h2 className="text-2xl font-bold mb-4">{selectedMedicine.itemName}</h2>
-            <img src={selectedMedicine.image} alt={selectedMedicine.itemName} style={{ height: '100px', width: 'auto' }} className="w-full h-auto mb-4" />
+            <img src={selectedMedicine.image} alt={selectedMedicine.itemName}  style={{ height: '100px', width: 'auto' }} className="w-full h-auto mb-4" />
             <p><strong>Item Generic Name:</strong> {selectedMedicine.itemGenericName}</p>
             <p><strong>Short Description:</strong> {selectedMedicine.shortDescription}</p>
             <p><strong>Category:</strong> {selectedMedicine.category}</p>
@@ -156,12 +131,14 @@ const MedicinesIndex = () => {
             <p><strong>Seller Email:</strong> {selectedMedicine.sellerEmail}</p>
             <p><strong>Seller Name:</strong> {selectedMedicine.sellerName}</p>
             <p><strong>Price:</strong> {selectedMedicine.price}</p>
+
             <button onClick={closeModal} className="mt-4 px-4 py-2 bg-red-500 text-white rounded">Close</button>
           </div>
         )}
       </Modal>
+
     </div>
   );
 };
 
-export default MedicinesIndex;
+export default Advertise;

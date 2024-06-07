@@ -24,7 +24,7 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
 
     const onSubmit = async (data) => {
-        const { name, email, password, image } = data;
+        const { name, email, password, image, role } = data;
         const file = image[0];
 
         try {
@@ -42,8 +42,8 @@ const Register = () => {
 
             await updateUserProfile(name, imageUrl);
 
-            const userInfo = { name, email, photoURL: imageUrl };
-            await axiosPublic.post('users', userInfo);
+            const userInfo = { name, email, photoURL: imageUrl, role };
+            await axiosPublic.post('/users', userInfo);
 
             navigate(location?.state ? location.state : '/');
             toast.success("Registered successfully");
@@ -54,14 +54,14 @@ const Register = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-blue-100">
+        <div className=" flex justify-center items-center min-h-screen mx-auto bg-blue-100">
             <Helmet>
                 <title>Sign Up</title>
             </Helmet>
-            <div className="bg-white shadow-lg rounded-lg p-8 w-1/2 py-24 px-16 roboto-regular">
-                <h1 className="text-6xl text-blue-500 font-bold mb-6 text-center">MedicoDirect</h1>
-                <h1 className="text-3xl font-bold mb-6 text-center">Create an Account</h1>
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-xl px-36">
+            <div className="w-full md:w-3/4 lg:w-1/2 bg-white shadow-lg rounded-lg mx-auto sm:mx-8  mt-24 py-24 px-16 roboto-regular m-auto">
+            <h1 className="text-blue-900 text-2xl font-bold ml-2 text-center">Medico<span className="text-3xl text-yellow-600">Direct</span></h1>
+            <h1 className="text-xl font-bold mb-6 text-center">Create an Account</h1>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-sm ">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Your Name:</span>
@@ -120,6 +120,15 @@ const Register = () => {
                             </button>
                         </div>
                         {errors.password && <p className="text-red-500">{errors.password.message}</p>}
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Role:</span>
+                        </label>
+                        <select {...register("role")} className="input input-bordered w-full">
+                            <option value="user">User</option>
+                            <option value="seller">Seller</option>
+                        </select>
                     </div>
                     {registerError && <p className="text-red-500 text-center">{registerError}</p>}
                     <div className="form-control mt-6 flex justify-center">

@@ -62,7 +62,8 @@ const Login = () => {
             setUser(result.user);
             const userInfo ={
                 email: result.user?.email,
-                name: result.user?.displayName
+                name: result.user?.displayName,
+                role: 'user'
             }
             axiosPublic.post('/users',userInfo)
             .then(res=>{
@@ -93,19 +94,16 @@ const Login = () => {
     };
 
     return ( 
-        <div className="max-w-[600px] mx-auto  p-5 shadow-lg rounded-lg bg-white py-16 mb-12">
+        <div className="pt-32">
             <Helmet>
                 <title>Login</title>
             </Helmet>
-            <div className="flex justify-center mb-6">
-
-
-            </div>
+            <div className="lg:w-1/2 md:w-1/2 w-full mx-auto  p-5 shadow-lg rounded-lg bg-white py-16 mb-12">
             <form onSubmit={handleLogin} className="space-y-4">
                 <div>
-                <h1 className="text-white text-2xl font-bold ml-2">MedicoDirec<span className="text-4xl">+</span></h1>
+                <h1 className="text-blue-900 text-2xl font-bold ml-2 text-center">Medico<span className="text-3xl text-yellow-600">Direct</span></h1>
 
-                    <label className="block dark:text-gray-300">Enter Your Email:</label>
+                    <label className="block dark:text-gray-300 w-full">Enter Your Email:</label>
                     <input 
                         type="email" 
                         name="email" 
@@ -176,6 +174,10 @@ const Login = () => {
                     <button className="w-full bg-green-500 text-white p-2 rounded">Create New Account</button>
                 </Link>
             </div>
+
+
+            </div>
+            
         </div>
     );
 };

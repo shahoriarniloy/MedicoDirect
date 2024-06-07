@@ -1,8 +1,8 @@
 
 import Swal from "sweetalert2";
 import UseCart from "../Hooks/UseCart";
-import { FaTrash } from 'react-icons/fa';
-import useAxiosSecure from "../Hooks/UseAxiosSecure";
+import { FaTrash, FaPlus, FaMinus } from 'react-icons/fa';import useAxiosSecure from "../Hooks/UseAxiosSecure";
+import { Link } from "react-router-dom";
 
 const AdminCart = () => {
     const [cart, refetch]= UseCart();
@@ -24,7 +24,7 @@ const AdminCart = () => {
            
             axiosSecure.delete(`/carts/${id}`)
             .then(res=>{
-                if(res.data.deletedCount>0)
+                if(res.data.result1.deletedCount>0)
                     {
                         refetch();
                            Swal.fire({
@@ -39,11 +39,56 @@ const AdminCart = () => {
             }
           });
           
-        
+
+		
 
 
 
     }
+
+	const handleQuantityPlus = (id, currentQuantity, perUnitPrice) => {
+		const updatedQuantity = currentQuantity+1;
+		console.log(updatedQuantity);
+		const updatedPrice = perUnitPrice * updatedQuantity;
+		console.log(updatedPrice);
+		
+		const updatedCart = {
+			id,
+			updatedQuantity,
+			updatedPrice
+		};
+	
+		console.log(updatedCart);
+	
+		axiosSecure.put(`/carts/${id}`, updatedCart)
+			.then(() => refetch())
+			.catch((error) => console.error("Error updating cart:", error));
+	};
+
+
+
+	const handleQuantityMinus = (id, currentQuantity, perUnitPrice) => {
+		
+		const updatedQuantity = currentQuantity-1;
+		console.log('updatedquantity',updatedQuantity);
+		const updatedPrice = perUnitPrice * updatedQuantity;
+		console.log('updated price',updatedPrice);
+		
+		const updatedCart = {
+			id,
+			updatedQuantity,
+			updatedPrice
+		};
+	
+		console.log(updatedCart);
+	
+		axiosSecure.put(`/carts/${id}`, updatedCart)
+			.then(() => refetch())
+			.catch((error) => console.error("Error updating cart:", error));
+	};
+	
+	
+	
     return (
         <div className="pt-24 grid lg:grid-cols-4 md-grid-cols-4 grid-cols-1 mb-16 gap-8 ml-4">
            
@@ -68,6 +113,8 @@ const AdminCart = () => {
 					<th className="p-3">Issued</th>
 					{/* <th className="p-3">Due</th> */}
 					<th className="p-3 text-right">Amount</th>
+					<th className="p-3 text-right">Qunatity</th>
+					
                     <th className="p-3 text-center">Action</th>
 
 					<th className="p-3 text-center">Status</th>
@@ -87,7 +134,6 @@ const AdminCart = () => {
 					<td className="p-3">
 						<p>{item.purchaseDate}
 </p>
-						<p className="dark:text-gray-600">Friday</p>
 					</td>
 					{/* <td className="p-3">
 						<p>01 Feb 2022</p>
@@ -96,9 +142,18 @@ const AdminCart = () => {
 					<td className="p-3 text-right">
 						<p>{item.price}</p>
 					</td>
-                    <td className="p-3 flex justify-center">
-						<button onClick={()=>handleDelete(item._id)}><FaTrash/></button>
+					<td className="p-3 text-right ">
+						<p>{item.quantity}</p>
+						
 					</td>
+                    <td className="flex justify-between gap-4 items-center mt-4">
+						<button onClick={() => handleDelete(item._id)}><FaTrash/></button>
+						<button onClick={() => handleQuantityPlus(item._id, item.quantity, item.perUnitPrice)}><FaPlus/></button>
+						{item.quantity > 0 && (
+							<button onClick={() => handleQuantityMinus(item._id, item.quantity, item.perUnitPrice, -1)}><FaMinus/></button>
+						)}
+					</td>
+
 					<td className="p-3 ">
 						<span className="px-3 py-1 font-semibold rounded-md dark:bg-blue-500 dark:text-gray-50 flex justify-center">
 							<span>Pending</span>
@@ -122,7 +177,13 @@ const AdminCart = () => {
 
                 <h2>Items: {cart.length}</h2>
                 <h2>Total Price:{totalPrice}</h2>
-                <button type='button' className="bg-green-500 rounded-lg py-2 mt-2 text-white">Pay</button>
+				{
+					cart.length? <Link to="/payment">                
+					<button type='button' className="bg-green-500 rounded-lg py-2 mt-2 text-white w-full">Pay</button>
+					</Link>:             
+					<button type='button' className="bg-gray-500 rounded-lg py-2 mt-2 text-white">Pay</button>
+					
+				}
             </div>
 
             
@@ -131,3 +192,41 @@ const AdminCart = () => {
 };
 
 export default AdminCart;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

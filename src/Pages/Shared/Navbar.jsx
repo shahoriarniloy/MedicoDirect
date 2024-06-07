@@ -30,9 +30,9 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    logOut().then(() => {
+    logOut();
       navigate('/login');
-    });
+
   };
 
   useEffect(() => {
@@ -41,10 +41,10 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-10 roboto-regular bg-blue-600 transition duration-300 ${navbar ? 'shadow-md' : ''}`}>
+    <nav className={`fixed w-full z-10 roboto-regular bg-blue-900 transition duration-300 ${navbar ? 'shadow-md' : ''}`}>
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center">
-          <span className="text-white text-2xl font-bold ml-2">MedicoDirec<span className="text-4xl">+</span></span>
+        <h1 className="text-white text-3xl font-bold ml-2 text-center">Medico<span className="text-4xl text-yellow-600">Direct</span></h1>
         </div>
         <div className="hidden md:flex space-x-6 items-center">
           <Link
@@ -106,7 +106,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/login"
-              className={`bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 ${location.pathname === '/login' ? 'border-b-2 border-white' : ''}`}
+              className={`bg-green-600 text-white px-4 py-2 rounded-md hover:bg-yellow-500 ${location.pathname === '/login' ? 'border-1 border-white' : ''}`}
             >
               Join Us
             </Link>
