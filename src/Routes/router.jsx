@@ -24,6 +24,7 @@ import AdminAdvertisement from "../Pages/Dashboard/Advertise/AdminAdvertisement"
 import UserCategoryIndex from "../Pages/Dashboard/Category/UserCategoryIndex";
 import InvoiceHistory from "../Pages/Dashboard/Payment/InvoiceHistory";
 import AdminHome from "../Pages/Dashboard/AdminHome";
+import DashboardHome from "../Pages/Dashboard/DashboardHome";
 
   export const router = createBrowserRouter([
     {
@@ -68,7 +69,7 @@ import AdminHome from "../Pages/Dashboard/AdminHome";
         children:[
             {
                 path:'/dashboard',
-                element: <AdminHome></AdminHome>
+                element: <DashboardHome></DashboardHome>
             },
             {
                 path:'/dashboard/admin/payments',

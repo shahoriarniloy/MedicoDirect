@@ -127,7 +127,7 @@ const Dashboard = () => {
                            
                         </div>
                     )}
-                    <li className='flex flex-row items-center'>
+                    {/* <li className='flex flex-row items-center'>
                     <BsCashCoin />
                                 <NavLink 
                                     to="/dashboard/invoices/:email"
@@ -135,7 +135,7 @@ const Dashboard = () => {
                                 >
                                     &nbsp; Invoice
                                 </NavLink>
-                            </li>
+                            </li> */}
 
                     <li className='flex flex-row items-center'>
                         <ImHome />
