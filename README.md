@@ -12,6 +12,10 @@
 - email : user@gmail.com
 - password : .User1
 
+## Live Link
+- Firebase: [https://medicodirect-d0ec3.web.app]
+- Netlify: [https://medicodirect.netlify.app]
+
 ## Introduction
 Welcome to our Multi-Vendor Medicine Selling E-commerce platform, a comprehensive web application for buying and selling medicines and healthcare products. Developed using the MERN stack (MongoDB, Express.js, React.js, Node.js), this platform offers a seamless user experience with features such as user authentication, real-time updates, and responsive design.
 
