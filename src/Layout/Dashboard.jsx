@@ -1,4 +1,4 @@
-import { Outlet, NavLink, Link,  useNavigate } from 'react-router-dom';
+import { Outlet, NavLink,   useNavigate } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa';
 import { BsPaypal, BsBadgeAd, BsCashCoin, BsClipboardData } from "react-icons/bs";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,7 +17,7 @@ const Dashboard = () => {
     const navigate= useNavigate();
 
     if (isLoadingAdmin || isLoadingSeller) {
-        return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>;
+        return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-blue-900"></div>;
     }
 
     const handleLogout = () => {

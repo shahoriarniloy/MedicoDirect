@@ -43,7 +43,7 @@ const CategoryIndex = () => {
     return (
         <div className=' '>
             <Helmet>
-                <title>Category Index</title>
+                <title>Categories</title>
             </Helmet>
             <h2 className='text-3xl text-center roboto-regular text-blue-600'>Category Index</h2>
             <button type="button" className='bg-blue-500 px-8 mb-4 float-right mr-8 py-2 rounded-xl text-white text-center' onClick={openModal}><FaPlus /></button>

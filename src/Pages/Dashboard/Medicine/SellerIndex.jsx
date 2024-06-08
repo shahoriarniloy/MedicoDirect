@@ -13,6 +13,8 @@ import { useQuery } from '@tanstack/react-query';
 import { FaPlus } from 'react-icons/fa';
 import { TailSpin } from 'react-loader-spinner';
 import Add from './Add';
+import { Helmet } from "react-helmet";
+
 
 Modal.setAppElement('#root');
 
@@ -156,6 +158,7 @@ const SellerIndex = () => {
 
   return (
     <div className="container mx-auto p-4 roboto-regular">
+        <Helmet><title>Manage Medicines</title></Helmet>
       <h2 className="text-2xl font-bold mb-4 text-center text-blue-600">Medicines List</h2>
       <button
         type="button"

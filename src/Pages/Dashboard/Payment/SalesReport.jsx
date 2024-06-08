@@ -4,6 +4,8 @@ import { useRef, useState } from 'react';
 import { DownloadTableExcel } from 'react-export-table-to-excel';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { Helmet } from "react-helmet";
+
 
 const SalesReport = () => {
     const tableRef = useRef(null);
@@ -28,6 +30,7 @@ const SalesReport = () => {
 
     return (
         <div>
+            <Helmet><title>Sales Report</title></Helmet>
             <div className="flex justify-between mb-4">
                 <div className="flex items-center space-x-4">
                     <DatePicker

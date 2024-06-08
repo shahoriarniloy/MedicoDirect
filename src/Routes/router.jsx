@@ -32,6 +32,7 @@ import UpdateProfile from "../Login/UpdateProfile";
     {
       path: "/",
       element: <Main></Main>,
+      errorElement:<RouteNotFound></RouteNotFound>,
       children: [
         {
             path: "/",
@@ -122,10 +123,7 @@ import UpdateProfile from "../Login/UpdateProfile";
                 element:<PrivateRoutes><AdminAdvertisement></AdminAdvertisement></PrivateRoutes> 
             },
             
-            {
-                path: "*",
-                element: <RouteNotFound />
-            }
+           
             
            
         ]

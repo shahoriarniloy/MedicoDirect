@@ -3,6 +3,8 @@ import Swal from "sweetalert2";
 import UseCart from "../Hooks/UseCart";
 import { FaTrash, FaPlus, FaMinus } from 'react-icons/fa';import useAxiosSecure from "../Hooks/UseAxiosSecure";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
 
 const AdminCart = () => {
     const [cart, refetch]= UseCart();
@@ -91,6 +93,7 @@ const AdminCart = () => {
 	
     return (
         <div className="pt-24 grid lg:grid-cols-4 md-grid-cols-4 grid-cols-1 mb-16 gap-8 ml-4">
+			<Helmet><title>Cart</title></Helmet>
            
 
             <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800 col-span-3  bg-blue-100  rounded-lg h-fit">

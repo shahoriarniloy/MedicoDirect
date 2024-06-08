@@ -44,7 +44,7 @@ const MedicineForm = ({ isOpen, onClose }) => {
       data.sellerName = user.displayName;
       data.image = imageUrl;
 
-      await axios.post('http://localhost:5000/medicines', data);
+      await axiosSecure.post('/medicines', data);
       toast.success('Medicine information added successfully');
       reset();
       onClose();  

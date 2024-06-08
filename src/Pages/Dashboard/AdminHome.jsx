@@ -4,6 +4,8 @@ import { useQuery } from '@tanstack/react-query';
 import { useRef, useState } from 'react';
 import { DownloadTableExcel } from 'react-export-table-to-excel';
 import 'react-datepicker/dist/react-datepicker.css';
+import { Helmet } from "react-helmet";
+
 const AdminHome = () => {
     const tableRef = useRef(null);
     const axiosSecure = UseAxiosSecure();
@@ -45,6 +47,7 @@ const AdminHome = () => {
 
     return (
         <div>
+            <Helmet><title>Admin Dashboard</title></Helmet>
            
             <div className="flex justify-between mb-4">
                 

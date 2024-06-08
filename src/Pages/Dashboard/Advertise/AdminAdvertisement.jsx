@@ -3,6 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../Hooks/UseAxiosSecure';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from "react-helmet";
+
 
 const AdminAdvertisement = () => {
     const axiosSecure = useAxiosSecure();
@@ -50,7 +52,8 @@ const AdminAdvertisement = () => {
 
     return (
         <div className="">
-            <h1>Advertise Medicines</h1>
+            <Helmet><title>Manage Advertisement</title></Helmet>
+            <h1 className='text-2xl text-blue-900 text-center'>Advertise Medicines</h1>
             
             <table className="min-w-full bg-white border border-gray-200">
                 <thead>

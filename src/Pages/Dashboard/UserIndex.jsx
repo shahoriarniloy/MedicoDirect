@@ -2,6 +2,8 @@ import React from 'react';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from "react-helmet";
+
 
 const UserIndex = () => {
     const axiosSecure = useAxiosSecure();
@@ -85,6 +87,7 @@ const UserIndex = () => {
 
     return (
         <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
+            <Helmet><title>Manage Users</title></Helmet>
             <h2 className="mb-4 text-2xl font-semibold leading-tight">All Users</h2>
             <div className="overflow-x-auto">
                 <table className="w-full p-6 text-xs text-left whitespace-nowrap">

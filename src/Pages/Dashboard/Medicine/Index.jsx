@@ -11,6 +11,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAxiosSecure from '../../../Hooks/UseAxiosSecure';  
 import UseCart from '../../../Hooks/UseCart';
+import { Helmet } from "react-helmet";
+
 
 Modal.setAppElement('#root');
 
@@ -98,6 +100,7 @@ const MedicinesIndex = () => {
 
   return (
     <div className="container mx-auto p-4 roboto-regular">
+      <Helmet><title>Medicines</title></Helmet>
       <h2 className="text-2xl font-bold mb-4 mt-16 text-center text-blue-600">Medicines List</h2>
       <table className="min-w-full bg-white border border-gray-200">
         <thead>
@@ -114,7 +117,7 @@ const MedicinesIndex = () => {
             <tr key={medicine._id} className="text-center">
               <td className="px-4 py-2 border-b">{medicine.itemName}</td>
               <td className="px-4 py-2 border-b"><img src={medicine.image} style={{ height: '200px' ,width:'auto'}} alt="" /></td>
-              <td className="px-4 py-2 border-b">{medicine.brandName}</td>
+              <td className="px-4 py-2 border-b">{medicine.itemGenericName}</td>
               <td className="px-4 py-2 border-b">{medicine.category}</td>
               <td className="px-4 py-2 border-b">
                 <button onClick={() => openModal(medicine._id)} className="text-blue-500 hover:text-blue-700 mx-2">

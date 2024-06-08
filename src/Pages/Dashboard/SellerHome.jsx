@@ -2,6 +2,8 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 import UseAuth from '../../Hooks/UseAuth';
+import { Helmet } from "react-helmet";
+
 
 const SellerHome = () => {
   const { category } = useParams();
@@ -54,6 +56,8 @@ const SellerHome = () => {
 
   return (
     <div className='roboto-regular'>
+        <Helmet><title>Seller Dashboard</title></Helmet>
+
                 <h1 className="text-blue-900 text-2xl font-bold ml-2 text-center">Medico<span className="text-3xl text-yellow-600">Direct</span></h1>
 
 

@@ -12,7 +12,7 @@ const UseUser = () => {
         queryFn: async () => {
             if (!user?.email) return false;
             const res = await axiosSecure.get(`/user/user/${user.email}`);
-            return res.data.user || false;  // Ensure it returns a value other than undefined
+            return res.data.user || false;  
         }
     });
 

@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../Hooks/UseAxiosSecure';
+import { Helmet } from "react-helmet";
+
 
 const PaymentList = () => {
   const axiosSecure = useAxiosSecure();
@@ -25,6 +27,10 @@ const PaymentList = () => {
 
   return (
     <div>
+        <Helmet>
+            <title>Payment Management</title>
+        </Helmet>
+
             <h2 className='text-4xl text-center text-blue-500 mb-12'>Payment Management</h2>
 
 
