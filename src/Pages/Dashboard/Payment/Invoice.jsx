@@ -50,7 +50,7 @@ const Invoice = () => {
                 <h1 className="text-blue-900 text-2xl font-bold ml-2 text-center">Medico<span className="text-3xl text-yellow-600">Direct</span></h1>
                 <h2 className="mb-4 text-2xl font-semibold leading-tight">Invoices</h2>
                 {loading ? (
-                    <p>Loading...</p>
+                    <div className='flex justify-center items-center'><div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:blue-violet-900"></div></div>
                 ) : error ? (
                     <p>{error}</p>
                 ) : (
