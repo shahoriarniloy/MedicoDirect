@@ -22,7 +22,7 @@ const CheckOutForm = () => {
        if(totalPrice>0){
         axiosSecure.post('/create-payment-intent', { price: totalPrice })
         .then(res => {
-            console.log(res.data.ClientSecret);
+            // console.log(res.data.ClientSecret);
             setClientSecret(res.data.ClientSecret);
         })
         .catch(error => {
@@ -49,11 +49,11 @@ const CheckOutForm = () => {
 
         if (paymentMethodError) {
             setError(paymentMethodError.message);
-            console.log('payment error', paymentMethodError);
+            // console.log('payment error', paymentMethodError);
             setProcessing(false);
             return;
         } else {
-            console.log('payment method', paymentMethod);
+            // console.log('payment method', paymentMethod);
             setError('');
         }
 
@@ -69,7 +69,7 @@ const CheckOutForm = () => {
 
         if (confirmError) {
             setError(confirmError.message);
-            console.log('confirm error', confirmError);
+            // console.log('confirm error', confirmError);
             setProcessing(false);
             return;
         }
@@ -88,7 +88,7 @@ const CheckOutForm = () => {
                     transactionId: transactionId
                 }
                 const res= await axiosSecure.post('/payments',payment);
-                console.log('payment saved',res);
+                // console.log('payment saved',res);
                 if(res.data?.paymentResult?.insertedId
                     ){
 

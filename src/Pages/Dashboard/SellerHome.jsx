@@ -25,7 +25,7 @@ const SellerHome = () => {
     queryFn: async () => {
       try {
         const response = await axiosSecure.get(`/invoices/${user.email}`);
-        console.log('invoice return:',response.data);
+        // console.log('invoice return:',response.data);
         return response.data;
       } catch (error) {
         console.error('Error fetching invoices:', error);

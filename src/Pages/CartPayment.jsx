@@ -50,9 +50,9 @@ const AdminCart = () => {
 
 	const handleQuantityPlus = (id, currentQuantity, perUnitPrice) => {
 		const updatedQuantity = currentQuantity+1;
-		console.log(updatedQuantity);
+		// console.log(updatedQuantity);
 		const updatedPrice = perUnitPrice * updatedQuantity;
-		console.log(updatedPrice);
+		// console.log(updatedPrice);
 		
 		const updatedCart = {
 			id,
@@ -60,7 +60,7 @@ const AdminCart = () => {
 			updatedPrice
 		};
 	
-		console.log(updatedCart);
+		// console.log(updatedCart);
 	
 		axiosSecure.put(`/carts/${id}`, updatedCart)
 			.then(() => refetch())
@@ -72,9 +72,9 @@ const AdminCart = () => {
 	const handleQuantityMinus = (id, currentQuantity, perUnitPrice) => {
 		
 		const updatedQuantity = currentQuantity-1;
-		console.log('updatedquantity',updatedQuantity);
+		// console.log('updatedquantity',updatedQuantity);
 		const updatedPrice = perUnitPrice * updatedQuantity;
-		console.log('updated price',updatedPrice);
+		// console.log('updated price',updatedPrice);
 		
 		const updatedCart = {
 			id,
@@ -82,7 +82,7 @@ const AdminCart = () => {
 			updatedPrice
 		};
 	
-		console.log(updatedCart);
+		// console.log(updatedCart);
 	
 		axiosSecure.put(`/carts/${id}`, updatedCart)
 			.then(() => refetch())

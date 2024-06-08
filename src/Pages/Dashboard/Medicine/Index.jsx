@@ -69,7 +69,7 @@ const MedicinesIndex = () => {
 
       axiosSecure.post('/carts', cartItem)
         .then(res => {
-          console.log(res.data);
+          // console.log(res.data);
           if (res.data && res.data.result1.insertedId) {
             toast.success('Added to Cart');
             refetch();

@@ -66,11 +66,11 @@ const UserHome = () => {
                 <h2>Total Purchase Amount:{totalPrice}</h2>
            </div>
            <div className='flex justify-between'>
-                <h2>Pending Sells: {totalPending} </h2> 
+                <h2>Pending Purchase: {totalPending} </h2> 
                 <h2>Total Pending Amount:{totalPendingPrice}</h2>
            </div>
            <div className='flex justify-between'>
-                <h2>Paid Sells: {totalPaid} </h2> 
+                <h2>Paid Purchase: {totalPaid} </h2> 
                 <h2>Total Paid Amount:{totalPaidPrice}</h2>
            </div>
             </div>

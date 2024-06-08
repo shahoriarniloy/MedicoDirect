@@ -14,7 +14,7 @@ const UserCategoryIndex = () => {
     queryFn: async () => {
       try {
         const response = await axiosSecure.get(`/categories/${category}`);
-        console.log(response.data);
+        // console.log(response.data);
         return response;
       } catch (error) {
         console.error('Error fetching medicines:', error);
