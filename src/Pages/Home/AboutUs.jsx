@@ -17,7 +17,7 @@ const AboutUs = () => {
         Join us today and experience the convenience of shopping for your healthcare needs online.
       </p>
         {
-             user && 
+             !user && 
              <Link to="/login"><button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Join Us</button></Link>
             
         }
