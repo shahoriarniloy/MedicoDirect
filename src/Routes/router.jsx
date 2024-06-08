@@ -25,6 +25,7 @@ import UserCategoryIndex from "../Pages/Dashboard/Category/UserCategoryIndex";
 import InvoiceHistory from "../Pages/Dashboard/Payment/InvoiceHistory";
 import AdminHome from "../Pages/Dashboard/AdminHome";
 import DashboardHome from "../Pages/Dashboard/DashboardHome";
+import PrivateRoutes from "./PrivateRoutes";
 
   export const router = createBrowserRouter([
     {
@@ -69,51 +70,51 @@ import DashboardHome from "../Pages/Dashboard/DashboardHome";
         children:[
             {
                 path:'/dashboard',
-                element: <DashboardHome></DashboardHome>
+                element:<PrivateRoutes><DashboardHome></DashboardHome></PrivateRoutes> 
             },
             {
                 path:'/dashboard/admin/payments',
-                element: <AdminCart></AdminCart>
+                element:<PrivateRoutes><AdminCart></AdminCart></PrivateRoutes> 
             },
             {
                 path:'/dashboard/users',
-                element: <UserIndex></UserIndex>
+                element:<PrivateRoutes><UserIndex></UserIndex></PrivateRoutes> 
             },
             {
                 path:"/dashboard/category/index",
-                element: <CategoryIndex></CategoryIndex>
+                element:<PrivateRoutes><CategoryIndex></CategoryIndex></PrivateRoutes> 
             },
             {
                 path:"/dashboard/invoice/:transactionId",
-                element: <Invoice></Invoice>
+                element:<PrivateRoutes><Invoice></Invoice></PrivateRoutes> 
             },
             {
                 path:"/dashboard/invoices/:email",
-                element: <InvoiceHistory></InvoiceHistory>
+                element:<PrivateRoutes><InvoiceHistory></InvoiceHistory></PrivateRoutes> 
             },
             {
                 path:"/dashboard/payment/status",
-                element: <PaymentStatus></PaymentStatus>
+                element:<PrivateRoutes><PaymentStatus></PaymentStatus></PrivateRoutes> 
             },
             
             {
                 path:"/dashboard/medicine/create",
-                element: <CreateMedicine></CreateMedicine>
+                element:<PrivateRoutes><CreateMedicine></CreateMedicine></PrivateRoutes> 
             },
             {
                 path:"/dashboard/seller/medicine/index",
-                element: <SellerIndex></SellerIndex>
+                element:<PrivateRoutes><SellerIndex></SellerIndex></PrivateRoutes> 
             }, 
             {
                 path:"/dashboard/sales",
-                element: <SalesReport></SalesReport>
+                element:<PrivateRoutes><SalesReport></SalesReport></PrivateRoutes> 
             },
             {
                 path:"/dashboard/advertise",
-                element: <Advertise></Advertise>
+                element:<PrivateRoutes> <Advertise></Advertise></PrivateRoutes>
             }, {
                 path:"/dashboard/banner-advertise",
-                element: <AdminAdvertisement></AdminAdvertisement>
+                element:<PrivateRoutes><AdminAdvertisement></AdminAdvertisement></PrivateRoutes> 
             },
             
             {
