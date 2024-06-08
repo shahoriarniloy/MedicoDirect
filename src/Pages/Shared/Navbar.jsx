@@ -8,12 +8,12 @@ const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const [dropdownOpen1, setDropdownOpen1] = useState(false);
   const [dropdownOpen2, setDropdownOpen2] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logOut } = UseAuth(); 
   const [cart]=UseCart();
   
-
   const changeBackground = () => {
     if (window.scrollY >= 80) {
       setNavbar(true);
@@ -25,28 +25,29 @@ const Navbar = () => {
   const toggleDropdown1 = () => {
     setDropdownOpen1(!dropdownOpen1);
   };
+  
   const toggleDropdown2 = () => {
     setDropdownOpen2(!dropdownOpen2);
   };
 
   const handleLogout = () => {
     logOut();
-      navigate('/login');
-
+    navigate('/login');
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', changeBackground);
-    return () => window.removeEventListener('scroll', changeBackground);
+    const timerID = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timerID);
   }, []);
 
   return (
     <nav className={`fixed w-full z-10 roboto-regular bg-blue-900 transition duration-300 ${navbar ? 'shadow-md' : ''}`}>
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center">
-        <h1 className="text-white text-3xl font-bold ml-2 text-center">Medico<span className="text-4xl text-yellow-600">Direct</span></h1>
+          <h1 className="text-white text-2xl font-bold ml-2 text-center">Medico<span className="text-3xl text-yellow-600">Direct</span></h1>
         </div>
         <div className="hidden md:flex space-x-6 items-center">
+          {/* Links */}
           <Link
             to="/"
             className={`text-white hover:text-gray-300 ${location.pathname === '/' ? 'border-b-2 border-white' : ''}`}
@@ -77,12 +78,12 @@ const Navbar = () => {
             )}
           </div>
           <div className='flex'>
-          <Link to="/cart/payment" className="text-white hover:text-gray-300">
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l1.4-6H6.6M7 13a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z" />
-            </svg>
-          </Link>
-          <span className='text-white'>{cart.length}</span>
+            <Link to="/cart/payment" className="text-white hover:text-gray-300">
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l1.4-6H6.6M7 13a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z" />
+              </svg>
+            </Link>
+            <span className='text-white'>{cart.length}</span>
           </div>
           
           {user ? (
@@ -119,6 +120,7 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
+        <div className="text-white">{currentTime.toLocaleTimeString()}</div>
       </div>
     </nav>
   );

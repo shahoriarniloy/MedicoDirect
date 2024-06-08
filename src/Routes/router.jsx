@@ -26,6 +26,7 @@ import InvoiceHistory from "../Pages/Dashboard/Payment/InvoiceHistory";
 import AdminHome from "../Pages/Dashboard/AdminHome";
 import DashboardHome from "../Pages/Dashboard/DashboardHome";
 import PrivateRoutes from "./PrivateRoutes";
+import UpdateProfile from "../Login/UpdateProfile";
 
   export const router = createBrowserRouter([
     {
@@ -61,6 +62,10 @@ import PrivateRoutes from "./PrivateRoutes";
         {
             path:"/medicine-by-category/:category",
             element: <UserCategoryIndex></UserCategoryIndex>
+        },
+        {
+            path:"/update-profile",
+            element: <UpdateProfile></UpdateProfile>
         },
       ]
     },
