@@ -29,7 +29,7 @@ const Categories = () => {
 
   return (
     <div className='roboto-regular'>
-      <h1 className='text-center text-4xl text-blue-900 mt-12'>Categories</h1>
+      <h1 className=' text-black mt-12 text-3xl font-bold mb-8 ml-2 text-center'>Categories</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-12">
         {categories.map(category => (
           <div key={category._id} className="border border-gray-200 rounded-lg overflow-hidden shadow-lg">

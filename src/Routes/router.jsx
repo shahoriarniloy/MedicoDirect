@@ -48,7 +48,7 @@ import PrivateRoutes from "./PrivateRoutes";
         
         {
             path:"/cart/payment",
-            element: <CartPayment></CartPayment>
+            element: <PrivateRoutes><CartPayment></CartPayment></PrivateRoutes> 
         },
         {
             path:"/payment",
