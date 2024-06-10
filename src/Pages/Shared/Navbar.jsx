@@ -8,11 +8,12 @@ const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const [dropdownOpen1, setDropdownOpen1] = useState(false);
   const [dropdownOpen2, setDropdownOpen2] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logOut } = UseAuth(); 
-  const [cart]=UseCart();
+  const [cart] = UseCart();
   
   const changeBackground = () => {
     if (window.scrollY >= 80) {
@@ -30,6 +31,10 @@ const Navbar = () => {
     setDropdownOpen2(!dropdownOpen2);
   };
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   const handleLogout = () => {
     logOut();
     navigate('/login');
@@ -37,7 +42,11 @@ const Navbar = () => {
 
   useEffect(() => {
     const timerID = setInterval(() => setCurrentTime(new Date()), 1000);
-    return () => clearInterval(timerID);
+    window.addEventListener('scroll', changeBackground);
+    return () => {
+      clearInterval(timerID);
+      window.removeEventListener('scroll', changeBackground);
+    };
   }, []);
 
   return (
@@ -113,15 +122,83 @@ const Navbar = () => {
             </Link>
           )}
         </div>
-        <div className="md:hidden">
-          <button className="text-white focus:outline-none">
+        <div className="md:hidden flex items-center">
+          <button onClick={toggleMenu} className="text-white focus:outline-none">
             <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
             </svg>
           </button>
+          <div className="text-white ml-4">{currentTime.toLocaleTimeString()}</div>
         </div>
-        <div className="text-white">{currentTime.toLocaleTimeString()}</div>
       </div>
+      {menuOpen && (
+        <div className="md:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <Link
+              to="/"
+              className={`block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300 ${location.pathname === '/' ? 'bg-blue-700' : ''}`}
+              onClick={() => setMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <Link
+              to="/medicine/index"
+              className={`block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300 ${location.pathname === '/medicine/index' ? 'bg-blue-700' : ''}`}
+              onClick={() => setMenuOpen(false)}
+            >
+              Shop
+            </Link>
+            <button
+              onClick={toggleDropdown1}
+              className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300"
+            >
+              Languages
+            </button>
+            {dropdownOpen1 && (
+              <div className="px-2 py-2 bg-blue-700 rounded-md">
+                {['Bengali', 'English', 'French', 'Hindi', 'German'].map((language) => (
+                  <Link key={language} to="#" className="block px-3 py-2 text-white hover:bg-gray-100">{language}</Link>
+                ))}
+              </div>
+            )}
+            <Link to="/cart/payment" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300">
+              Cart ({cart.length})
+            </Link>
+            {user ? (
+              <>
+                <Link
+                  to="/update-profile"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Update Profile
+                </Link>
+                <Link
+                  to="/dashboard"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Dashboard
+                </Link>
+                <button
+                  onClick={() => { handleLogout(); setMenuOpen(false); }}
+                  className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300"
+                onClick={() => setMenuOpen(false)}
+              >
+                Join Us
+              </Link>
+            )}
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
