@@ -1,83 +1,38 @@
-# Multi-Vendor Medicine Selling E-commerce Website
+Multi-Vendor Medicine Selling E-commerce Website
+Admin
+Email: admin@gmail.com
+Password: .Admin1
+Seller
+Email: seller@gmail.com
+Password: .Seller1
+User
+Email: user@gmail.com
+Password: .User1
+Live Link
+Firebase: [https://medicodirect-d0ec3.web.app]
+Netlify: [https://medicodirect.netlify.app]
+Introduction
+A comprehensive platform for buying and selling medicines and healthcare products, developed with the MERN stack. Features include user authentication, real-time updates, and responsive design.
 
-## Admin
-- email : admin@gmail.com
-- password : .Admin1
-
-## Seller
-- email : seller@gmail.com
-- password : .Seller1
-
-## User
-- email : user@gmail.com
-- password : .User1
-
-## Live Link
-- Firebase: [https://medicodirect-d0ec3.web.app]
-- Netlify: [https://medicodirect.netlify.app]
-
-
-## Introduction
-Multi-Vendor Medicine Selling E-commerce platform, a comprehensive web application for buying and selling medicines and healthcare products. Developed using the MERN stack (MongoDB, Express.js, React.js, Node.js), this platform offers a seamless user experience with features such as user authentication, real-time updates, and responsive design.
-
-## Features
-### User Authentication
-- Secure login and registration with email/password and social logins (Google, GitHub).
-
-### Responsive Design
-- Fully responsive layout for mobile, tablet, and desktop views.
-
-### Multi-Vendor Support
-- Separate dashboards for admins, sellers, and users.
-
-### Product Management
-- Sellers can manage their medicines, including adding new products and updating existing ones.
-
-### Category and Discount Management
-- Admins can manage product categories and apply discounts.
-
-### Payment Integration
-- Secure payments via Stripe, with payment history tracking.
-
-### Cart and Checkout
-- Users can add products to the cart, adjust quantities, and proceed to checkout.
-
-### Invoice Generation
-- Post-purchase invoice generation with a download option.
-
-### Real-time Notifications
-- Toast notifications for CRUD operations and authentication events.
-
-### Advanced Search and Filtering
-- Pagination, sorting, and searching for medicines by name, generic name, and company.
-
-## Admin Dashboard Features
-- Manage Users: Promote or demote users to different roles (user, seller, admin).
-- Manage Categories: Add, update, or delete medicine categories.
-- Payment Management: View and approve pending payments.
-- Sales Reports: Generate and download sales reports in various formats.
-- Banner Advertisement: Manage advertisements for the homepage slider.
-
-## Seller Dashboard Features
-- Manage Medicines: Add, update, and delete medicine listings.
-- Payment History: View the payment history of sold medicines.
-- Advertisement Requests: Request advertisements for specific products.
-
-## User Dashboard Features
-- Payment History: View and track payment history.
-
-## Technical Details
-- **Frontend:** Built with React.js, ensuring a dynamic and responsive user interface.
-- **Backend:** Developed with Node.js and Express.js for robust and scalable server-side operations.
-- **Database:** MongoDB for efficient and flexible data storage.
-- **Authentication:** Implemented using Firebase for secure user authentication.
-- **State Management:** TanStack Query for efficient data fetching and state management.
-- **Notifications:** SweetAlert2 and React Toast for user-friendly notifications.
-- **Environment Variables:** Secure management of sensitive information using environment variables.
-
-## To Run Locally
-- **Clone the Repository:** Provides the command to clone the repository using Git.
-- **Install Dependencies:** Uses `npm install` to install all necessary dependencies for the project.
-- **Run the Project:** Executes `npm run dev` to start the project in development mode.
-
-
+Features
+User Authentication: Secure login/registration with email/password and social logins.
+Responsive Design: Optimized for mobile, tablet, and desktop.
+Multi-Vendor Support: Separate dashboards for admins, sellers, and users.
+Product Management: Sellers can add/update products.
+Category & Discount Management: Admins manage categories and discounts.
+Payment Integration: Secure payments via Stripe.
+Cart & Checkout: Users can manage their cart and checkout.
+Invoice Generation: Downloadable post-purchase invoices.
+Real-time Notifications: For CRUD operations and authentication.
+Advanced Search & Filtering: Search by name, generic name, and company.
+Technical Details
+Frontend: React.js
+Backend: Node.js and Express.js
+Database: MongoDB
+Authentication: Firebase
+State Management: TanStack Query
+Notifications: SweetAlert2 and React Toast
+To Run Locally
+Clone the Repository: git clone <repository-url>
+Install Dependencies: npm install
+Run the Project: npm run dev
