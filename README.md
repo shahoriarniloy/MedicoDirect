@@ -8,9 +8,9 @@ Password: .Seller1
 ## User
 Email: user@gmail.com
 Password: .User1
-Live Link
-Firebase: [https://medicodirect-d0ec3.web.app]
-Netlify: [https://medicodirect.netlify.app]
+# Live Link
+## Firebase: [https://medicodirect-d0ec3.web.app]
+## Netlify: [https://medicodirect.netlify.app]
 # Introduction
 A comprehensive platform for buying and selling medicines and healthcare products, developed with the MERN stack. Features include user authentication, real-time updates, and responsive design.
 
