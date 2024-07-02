@@ -16,10 +16,6 @@
 - Firebase: [https://medicodirect-d0ec3.web.app]
 - Netlify: [https://medicodirect.netlify.app]
 
-## To Run Locally
-- **Clone the Repository:** Provides the command to clone the repository using Git.
-- **Install Dependencies:** Uses `npm install` to install all necessary dependencies for the project.
-- **Run the Project:** Executes `npm run dev` to start the project in development mode.
 
 ## Introduction
 Multi-Vendor Medicine Selling E-commerce platform, a comprehensive web application for buying and selling medicines and healthcare products. Developed using the MERN stack (MongoDB, Express.js, React.js, Node.js), this platform offers a seamless user experience with features such as user authentication, real-time updates, and responsive design.
@@ -78,4 +74,10 @@ Multi-Vendor Medicine Selling E-commerce platform, a comprehensive web applicati
 - **State Management:** TanStack Query for efficient data fetching and state management.
 - **Notifications:** SweetAlert2 and React Toast for user-friendly notifications.
 - **Environment Variables:** Secure management of sensitive information using environment variables.
+
+## To Run Locally
+- **Clone the Repository:** Provides the command to clone the repository using Git.
+- **Install Dependencies:** Uses `npm install` to install all necessary dependencies for the project.
+- **Run the Project:** Executes `npm run dev` to start the project in development mode.
+
 
