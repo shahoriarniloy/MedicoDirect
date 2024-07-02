@@ -14,6 +14,7 @@ Password: .User1
 # Introduction
 A comprehensive platform for buying and selling medicines and healthcare products, developed with the MERN stack. Features include user authentication, real-time updates, and responsive design.
 
+# Server Side: [https://github.com/shahoriarniloy/MedicoDirect-Server]
 # Features
 User Authentication: Secure login/registration with email/password and social logins.
 Responsive Design: Optimized for mobile, tablet, and desktop.
