@@ -6,7 +6,7 @@ const AboutUs = () => {
 
   return (
     <div className="bg-white p-8 rounded-lg shadow-md text-center text-lg">
-        <h1 className="text-green-900 text-3xl font-bold mb-8 ml-2 text-center ">           <span className="text-black text-2xl font-bold ml-2 text-center">About Medico<span className="text-3xl text-green-600">Direct</span></span>
+        <h1 className="text-green-600 text-4xl font-bold mb-8 ml-2 text-center ">           <span className="text-black text-2xl font-bold ml-2 text-center">About Medico<span className="text-3xl text-green-600">Direct</span></span>
         </h1>
         <p className="text-gray-600 mb-4">
         MedicoDirect is your trusted online pharmacy, committed to providing high-quality medicines and healthcare products at affordable prices.

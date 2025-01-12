@@ -1,10 +1,10 @@
 
 const FAQSection = () => {
   return (
-    <section className="bg-white dark:text-gray-800 mt-12">
+    <section className=" dark:text-gray-800 mt-12 mb-12">
       <div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
-        <h2 className="text-2xl font-semibold sm:text-3xl text-center">Frequently Asked Questions</h2>
-        <p className="mt-4 mb-8 dark:text-gray-600">Answers to commonly asked questions about MedicoDirect:</p>
+        <h2 className="text-4xl text-green-600 font-semibold sm:text-3xl text-center">Frequently Asked Questions</h2>
+        {/* <p className="mt-4 mb-8 dark:text-gray-600">Answers to commonly asked questions about MedicoDirect:</p> */}
         <div className="space-y-4">
           <details className="w-full border rounded-lg">
             <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600">Are substitutes safe to use?</summary>
