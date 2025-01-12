@@ -53,7 +53,7 @@ const AdminAdvertisement = () => {
     return (
         <div className="">
             <Helmet><title>Manage Advertisement</title></Helmet>
-            <h1 className='text-2xl text-blue-900 text-center'>Advertise Medicines</h1>
+            <h1 className='text-2xl text-green-900 text-center'>Advertise Medicines</h1>
             
             <table className="min-w-full bg-white border border-gray-200">
                 <thead>
@@ -79,21 +79,21 @@ const AdminAdvertisement = () => {
                             </td> */}
                            {med.advertise === 'requested' && (
                             <td className="px-4 py-2 border-b">
-                                <button onClick={() => handleAdvertise(med)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                <button onClick={() => handleAdvertise(med)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                                     Approve Request
                                 </button>
                             </td>
                         )}
                         {med.advertise === 'yes' && (
                             <td className="px-4 py-2 border-b">
-                                <button onClick={() => handleRemoveAdvertise(med)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                <button onClick={() => handleRemoveAdvertise(med)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                                     Remove from Slide
                                 </button>
                             </td>
                         )}
                         {med.advertise === 'no' && (
                             <td className="px-4 py-2 border-b">
-                                <button onClick={() => handleAdvertise(med)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                <button onClick={() => handleAdvertise(med)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                                     Add to Slide
                                 </button>
                             </td>

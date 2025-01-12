@@ -119,14 +119,14 @@ const UserIndex = () => {
                                 <td className="px-3 py-2">
                                     <p>{user.email}</p>
                                 </td>
-                                <td className="px-3 py-2 text-blue-500">
+                                <td className="px-3 py-2 text-green-500">
                                     <p>{user.role || 'User'}</p>
                                 </td>
                                 <td className="px-3 py-2">
                                     <div className='h-fit py-4 mx-2 flex flex-col gap-2'>
-                                        <button onClick={() => handleMakeAdmin(user)} className='bg-blue-500 rounded-lg text-white w-36'>Make Admin</button>
-                                        <button onClick={()=>  handleMakeSeller(user)} className='bg-blue-500 rounded-lg text-white w-36'>Make Seller</button>
-                                        <button onClick={() => handleMakeUser(user)} className='bg-blue-500 rounded-lg text-white w-36'>Make User</button>
+                                        <button onClick={() => handleMakeAdmin(user)} className='bg-green-500 rounded-lg text-white w-36'>Make Admin</button>
+                                        <button onClick={()=>  handleMakeSeller(user)} className='bg-green-500 rounded-lg text-white w-36'>Make Seller</button>
+                                        <button onClick={() => handleMakeUser(user)} className='bg-green-500 rounded-lg text-white w-36'>Make User</button>
                                         <button onClick={() => handleDeleteUser(user)} className='bg-red-500 rounded-lg text-white w-36'>Delete</button>
                                     </div>
                                 </td>

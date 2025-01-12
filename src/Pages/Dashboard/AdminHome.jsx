@@ -53,8 +53,8 @@ const AdminHome = () => {
                 
                 
             </div>
-            <h1 className="text-blue-900 text-3xl font-bold ml-2 mb-8 text-center">Medico<span className="text-4xl text-yellow-600">Direct</span></h1>
-            <div className='bg-blue-900 text-white text-lg rounded-lg p-16'>
+            <h1 className="text-green-900 text-3xl font-bold ml-2 mb-8 text-center">Medico<span className="text-4xl text-yellow-600">Direct</span></h1>
+            <div className='bg-green-900 text-white text-lg rounded-lg p-16'>
             <div className='flex justify-between'>
                 <h2>Total Sells: {totalSells} </h2> 
                 <h2>Total Amount:{totalPrice}</h2>
@@ -68,13 +68,13 @@ const AdminHome = () => {
                 <h2>Total Paid Amount:{totalPaidPrice}</h2>
            </div>
             </div>
-            <h2 className='text-xl text-center text-blue-900 mt-8'>All Sales</h2>
+            <h2 className='text-xl text-center text-green-900 mt-8'>All Sales</h2>
             <DownloadTableExcel
                     filename="sales_report"
                     sheet="sales"
                     currentTableRef={tableRef.current}
                 >
-                    <button className='bg-blue-900 text-white py-2 px-6 float-right rounded-lg mb-8'>Export Excel</button>
+                    <button className='bg-green-900 text-white py-2 px-6 float-right rounded-lg mb-8'>Export Excel</button>
                 </DownloadTableExcel>
             <table ref={tableRef} className="min-w-full text-xs">
                 <thead className="dark:bg-gray-300">

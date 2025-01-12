@@ -96,7 +96,7 @@ const AdminCart = () => {
 			<Helmet><title>Cart</title></Helmet>
            
 
-            <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800 col-span-3  bg-blue-100  rounded-lg h-fit">
+            <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800 col-span-3  bg-green-100  rounded-lg h-fit">
 	<h2 className="mb-4 text-2xl font-semibold leading-tight">Invoices</h2>
 	<div className="overflow-x-auto">
 		<table className="min-w-full text-xs">
@@ -108,7 +108,7 @@ const AdminCart = () => {
 				<col />
 				<col className="w-24" />
 			</colgroup>
-			<thead className="dark:bg-blue-500 text-white">
+			<thead className="dark:bg-green-500 text-white">
 				<tr className="text-left">
                     <th className="p-3">Serial</th>
 					<th className="p-3">Invoice #</th>
@@ -158,7 +158,7 @@ const AdminCart = () => {
 					</td>
 
 					<td className="p-3 ">
-						<span className="px-3 py-1 font-semibold rounded-md dark:bg-blue-500 dark:text-gray-50 flex justify-center">
+						<span className="px-3 py-1 font-semibold rounded-md dark:bg-green-500 dark:text-gray-50 flex justify-center">
 							<span>Pending</span>
 						</span>
 					</td>
@@ -175,7 +175,7 @@ const AdminCart = () => {
 	</div>
 </div>
 
-<div className="flex flex-col px-8 float-right bg-blue-100 p-8 mr-4 rounded-lg h-fit">
+<div className="flex flex-col px-8 float-right bg-green-100 p-8 mr-4 rounded-lg h-fit">
 <h2 className="mb-4 text-2xl font-semibold leading-tight">Payment</h2>
 
                 <h2>Items: {cart.length}</h2>

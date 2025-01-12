@@ -101,7 +101,7 @@ const Login = () => {
             <div className="lg:w-1/2 md:w-1/2 w-full mx-auto  p-5 shadow-lg rounded-lg bg-white py-16 mb-12">
             <form onSubmit={handleLogin} className="space-y-4">
                 <div>
-                <h1 className="text-blue-900 text-2xl font-bold ml-2 text-center">Medico<span className="text-3xl text-yellow-600">Direct</span></h1>
+                <h1 className="text-green-900 text-2xl font-bold ml-2 text-center">Medico<span className="text-3xl text-yellow-600">Direct</span></h1>
 
                     <label className="block dark:text-gray-300 w-full">Enter Your Email:</label>
                     <input 
@@ -136,7 +136,7 @@ const Login = () => {
                 <div>
                     <button 
                         type="submit" 
-                        className="w-full bg-blue-500 text-white p-2 rounded mt-2"
+                        className="w-full bg-green-500 text-white p-2 rounded mt-2"
                         disabled={loading}
                     >
                         {loading ? "Logging in..." : "Log In"}
@@ -147,7 +147,7 @@ const Login = () => {
                 <h2 className="text-sm ">Or, Sign In With:</h2>
                 <button 
                     onClick={handleGoogleSignIn} 
-                    className="mt-2 p-2 bg-blue-500 text-white rounded w-full"
+                    className="mt-2 p-2 bg-green-500 text-white rounded w-full"
                     disabled={loading}
                 >
                     <img 

@@ -73,7 +73,7 @@ const Advertise = () => {
 
   return (
     <div className="container mx-auto p-4 roboto-regular">
-      <h2 className="text-2xl font-bold mb-4 mt-16 text-center text-blue-600">Medicines List</h2>
+      <h2 className="text-2xl font-bold mb-4 mt-16 text-center text-green-600">Medicines List</h2>
 
       <table className="min-w-full bg-white border border-gray-200">
         <thead>
@@ -95,7 +95,7 @@ const Advertise = () => {
               <td className="px-4 py-2 border-b">{med.company}</td>
               <td className="px-4 py-2 border-b">{med.category}</td>
               <td className="px-4 py-2 border-b">
-                <button onClick={() => openModal(med._id)} className="text-blue-500 hover:text-blue-700 mx-2">
+                <button onClick={() => openModal(med._id)} className="text-green-500 hover:text-green-700 mx-2">
                   <FontAwesomeIcon icon={faEye} />
                 </button>
                 <button onClick={() => handleRequestAdvertisement(med)} className="text-green-500 hover:text-green-700 mx-2">

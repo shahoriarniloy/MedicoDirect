@@ -57,7 +57,7 @@ const InvoiceHistory = () => {
         <Helmet>
             <title>Invoice History</title>
         </Helmet>
-      <h1 className="text-blue-900 text-2xl font-bold ml-2 text-center">
+      <h1 className="text-green-900 text-2xl font-bold ml-2 text-center">
         Medico<span className="text-3xl text-yellow-600">Direct</span>
       </h1>
 

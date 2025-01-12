@@ -54,12 +54,12 @@ const Register = () => {
     };
 
     return (
-        <div className=" flex justify-center items-center min-h-screen mx-auto bg-blue-100">
+        <div className=" flex justify-center items-center min-h-screen mx-auto bg-green-100">
             <Helmet>
                 <title>Sign Up</title>
             </Helmet>
             <div className="w-full md:w-3/4 lg:w-1/2 bg-white shadow-lg rounded-lg mx-auto sm:mx-8  mt-24 py-24 px-16 roboto-regular m-auto">
-            <h1 className="text-blue-900 text-2xl font-bold ml-2 text-center">Medico<span className="text-3xl text-yellow-600">Direct</span></h1>
+            <h1 className="text-green-900 text-2xl font-bold ml-2 text-center">Medico<span className="text-3xl text-yellow-600">Direct</span></h1>
             <h1 className="text-xl font-bold mb-6 text-center">Create an Account</h1>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-sm ">
                     <div className="form-control">
@@ -132,11 +132,11 @@ const Register = () => {
                     </div>
                     {registerError && <p className="text-red-500 text-center">{registerError}</p>}
                     <div className="form-control mt-6 flex justify-center">
-                        <button type="submit" className="px-8 w-1/2 py-3 font-semibold rounded bg-blue-500 text-white">Create Account</button>
+                        <button type="submit" className="px-8 w-1/2 py-3 font-semibold rounded bg-green-500 text-white">Create Account</button>
                     </div>
                 </form>
                 <div className="text-center mt-4">
-                    <p className="text-gray-400 text-xl">Already have an account? <Link to="/login" className="text-blue-500">Login</Link></p>
+                    <p className="text-gray-400 text-xl">Already have an account? <Link to="/login" className="text-green-500">Login</Link></p>
                 </div>
             </div>
         </div>

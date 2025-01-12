@@ -58,10 +58,10 @@ const SellerHome = () => {
     <div className='roboto-regular'>
         <Helmet><title>Seller Dashboard</title></Helmet>
 
-                <h1 className="text-blue-900 text-2xl font-bold ml-2 text-center">Medico<span className="text-3xl text-yellow-600">Direct</span></h1>
+                <h1 className="text-green-900 text-2xl font-bold ml-2 text-center">Medico<span className="text-3xl text-yellow-600">Direct</span></h1>
 
 
-                <div className='bg-blue-900 text-white text-lg rounded-lg p-16 mb-8'>
+                <div className='bg-green-900 text-white text-lg rounded-lg p-16 mb-8'>
             <div className='flex justify-between'>
                 <h2>Total Sells: {totalSells} </h2> 
                 <h2>Total Amount:{totalPrice}</h2>

@@ -159,10 +159,10 @@ const SellerIndex = () => {
   return (
     <div className="container mx-auto p-4 roboto-regular">
         <Helmet><title>Manage Medicines</title></Helmet>
-      <h2 className="text-2xl font-bold mb-4 text-center text-blue-600">Medicines List</h2>
+      <h2 className="text-2xl font-bold mb-4 text-center text-green-600">Medicines List</h2>
       <button
         type="button"
-        className='bg-blue-500 px-8 mb-4 float-right mr-8 py-2 rounded-xl text-white text-center'
+        className='bg-green-500 px-8 mb-4 float-right mr-8 py-2 rounded-xl text-white text-center'
         onClick={openAddModal}
       >
         <FaPlus />
@@ -217,7 +217,7 @@ const SellerIndex = () => {
                   <td className="px-4  border-b">{med.category}</td>
                   <td className="px-4  border-b">{med.price}</td>
                   <td className="px-4  border-b">
-                    <button onClick={() => openModal(med._id)} className="text-blue-500 hover:text-blue-700 mx-2">
+                    <button onClick={() => openModal(med._id)} className="text-green-500 hover:text-green-700 mx-2">
                       <FontAwesomeIcon icon={faEye} />
                     </button>
                     {/* Uncomment this if the add to cart functionality is needed */}
@@ -244,7 +244,7 @@ const SellerIndex = () => {
               <button
                 key={index}
                 onClick={() => paginate(index + 1)}
-                className={`px-4 py-2 mx-1 ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+                className={`px-4 py-2 mx-1 ${currentPage === index + 1 ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
               >
                 {index + 1}
               </button>

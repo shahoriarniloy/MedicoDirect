@@ -53,7 +53,7 @@ const SalesReport = () => {
                     />
                     <button
                         onClick={handleFilter}
-                        className="bg-blue-600 text-white py-2 px-4 rounded-lg"
+                        className="bg-green-600 text-white py-2 px-4 rounded-lg"
                     >
                         Filter
                     </button>
@@ -63,11 +63,11 @@ const SalesReport = () => {
                     sheet="sales"
                     currentTableRef={tableRef.current}
                 >
-                    <button className='bg-blue-600 text-white py-2 px-6 rounded-lg'>Export Excel</button>
+                    <button className='bg-green-600 text-white py-2 px-6 rounded-lg'>Export Excel</button>
                 </DownloadTableExcel>
             </div>
-            <h1 className="text-blue-900 text-3xl font-bold ml-2 text-center">Medico<span className="text-4xl text-yellow-600">Direct</span></h1>
-            <h2 className='text-2xl text-center text-blue-500 mb-12'>Sales Report</h2>
+            <h1 className="text-green-900 text-3xl font-bold ml-2 text-center">Medico<span className="text-4xl text-yellow-600">Direct</span></h1>
+            <h2 className='text-2xl text-center text-green-500 mb-12'>Sales Report</h2>
             <table ref={tableRef} className="min-w-full text-xs">
                 <thead className="dark:bg-gray-300">
                     <tr className="text-left">

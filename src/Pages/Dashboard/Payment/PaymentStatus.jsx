@@ -31,7 +31,7 @@ const PaymentList = () => {
             <title>Payment Management</title>
         </Helmet>
 
-            <h2 className='text-4xl text-center text-blue-500 mb-12'>Payment Management</h2>
+            <h2 className='text-4xl text-center text-green-500 mb-12'>Payment Management</h2>
 
 
 <table className="min-w-full text-xs">
@@ -60,7 +60,7 @@ const PaymentList = () => {
 
             <td className="p-3 flex justify-center">
               {payment.status === 'pending' && (
-                <button className='px-3 py-1 font-semibold rounded-md bg-blue-500 text-white' onClick={() => acceptPayment(payment._id, payment.cartIds)}>Accept Payment</button>
+                <button className='px-3 py-1 font-semibold rounded-md bg-green-500 text-white' onClick={() => acceptPayment(payment._id, payment.cartIds)}>Accept Payment</button>
               )}
             </td>
           </tr>

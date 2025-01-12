@@ -25,7 +25,7 @@ const UpdateProfile = () => {
       <Helmet>
         <title>Update Profile</title>
       </Helmet>
-      <h1 className="text-center text-4xl font-tittle text-blue-900 lg:mb-8">Profile</h1>
+      <h1 className="text-center text-4xl font-tittle text-green-900 lg:mb-8">Profile</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="form-control">
           <label htmlFor="name" className="label">
@@ -39,7 +39,7 @@ const UpdateProfile = () => {
           </label>
           <input type="text" id="photoURL" {...register("photoURL")} defaultValue={user.photoURL || ""} className="input input-bordered" />
         </div>
-        <button className="btn bg-blue-900 rounded-lg text-white px-4 py-2" type="submit">Save Changes</button>
+        <button className="btn bg-green-900 rounded-lg text-white px-4 py-2" type="submit">Save Changes</button>
       </form>
     </div>
   );

@@ -47,10 +47,10 @@ const Invoice = () => {
         <div>
             <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800" id="invoice">
                 
-                <h1 className="text-blue-900 text-2xl font-bold ml-2 text-center">Medico<span className="text-3xl text-yellow-600">Direct</span></h1>
+                <h1 className="text-green-900 text-2xl font-bold ml-2 text-center">Medico<span className="text-3xl text-yellow-600">Direct</span></h1>
                 <h2 className="mb-4 text-2xl font-semibold leading-tight">Invoices</h2>
                 {loading ? (
-                    <div className='flex justify-center items-center'><div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:blue-violet-900"></div></div>
+                    <div className='flex justify-center items-center'><div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:green-violet-900"></div></div>
                 ) : error ? (
                     <p>{error}</p>
                 ) : (
@@ -105,7 +105,7 @@ const Invoice = () => {
             </div>
             <button 
                             onClick={handlePrint} 
-                            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md"
+                            className="mt-4 px-4 py-2 bg-green-500 text-white rounded-md"
                         >
                             Print Invoice
                         </button>

@@ -50,10 +50,10 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-10 roboto-regular bg-blue-900 transition duration-300 ${navbar ? 'shadow-md' : ''}`}>
+    <nav className={`fixed w-full z-10 roboto-regular bg-gradient-to-r from-white via-green-500 to-green-900 transition duration-300 ${navbar ? 'shadow-md' : ''}`}>
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center">
-          <h1 className="text-white text-2xl font-bold ml-2 text-center">Medico<span className="text-3xl text-yellow-600">Direct</span></h1>
+          <h1 className="text-black text-2xl font-bold ml-2 text-center">Medico<span className="text-3xl text-green-600">Direct</span></h1>
         </div>
         <div className="hidden md:flex space-x-6 items-center">
           {/* Links */}
@@ -136,14 +136,14 @@ const Navbar = () => {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link
               to="/"
-              className={`block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300 ${location.pathname === '/' ? 'bg-blue-700' : ''}`}
+              className={`block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300 ${location.pathname === '/' ? 'bg-green-700' : ''}`}
               onClick={() => setMenuOpen(false)}
             >
               Home
             </Link>
             <Link
               to="/medicine/index"
-              className={`block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300 ${location.pathname === '/medicine/index' ? 'bg-blue-700' : ''}`}
+              className={`block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300 ${location.pathname === '/medicine/index' ? 'bg-green-700' : ''}`}
               onClick={() => setMenuOpen(false)}
             >
               Shop
@@ -155,7 +155,7 @@ const Navbar = () => {
               Languages
             </button>
             {dropdownOpen1 && (
-              <div className="px-2 py-2 bg-blue-700 rounded-md">
+              <div className="px-2 py-2 bg-green-700 rounded-md">
                 {['Bengali', 'English', 'French', 'Hindi', 'German'].map((language) => (
                   <Link key={language} to="#" className="block px-3 py-2 text-white hover:bg-gray-100">{language}</Link>
                 ))}

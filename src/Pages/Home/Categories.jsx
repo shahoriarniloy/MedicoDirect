@@ -20,7 +20,7 @@ const Categories = () => {
   });
 
   if (isLoading) {
-    return <div className='flex justify-center items-center'><div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:blue-violet-900"></div></div>;
+    return <div className='flex justify-center items-center'><div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:green-violet-900"></div></div>;
   }
 
   if (error) {
@@ -36,7 +36,7 @@ const Categories = () => {
             <img className="w-full h-[200px] object-cover" src={category.imageUrl} alt={category.name} />
             <div className="p-4">
               <h2 className="text-lg font-semibold mb-2">{category.name}</h2>
-              <Link to={`/medicine-by-category/${category.name}`}><button className="bg-blue-900 text-white py-2 px-4 rounded w-full hover:bg-blue-600">
+              <Link to={`/medicine-by-category/${category.name}`}><button className="bg-green-900 text-white py-2 px-4 rounded w-full hover:bg-green-600">
                 View
               </button></Link>
               

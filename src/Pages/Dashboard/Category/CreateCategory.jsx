@@ -46,12 +46,12 @@ const CreateCategory = ({ isOpen, onClose }) => {
       overlayClassName="fixed inset-0 bg-black bg-opacity-50"
       ariaHideApp={false} 
     >
-      <div className="relative bg-white border-2 border-blue-500 rounded-lg max-w-xl w-full p-8 mx-auto">
+      <div className="relative bg-white border-2 border-green-500 rounded-lg max-w-xl w-full p-8 mx-auto">
         <button className="absolute top-2 right-2 text-gray-500 hover:text-gray-700" onClick={onClose}>
           <AiOutlineClose size={24} />
         </button>
         <div className="px-8 py-6">
-          <h2 className="text-2xl font-bold mb-4 text-blue-600 text-center">Add Category</h2>
+          <h2 className="text-2xl font-bold mb-4 text-green-600 text-center">Add Category</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block text-gray-700">Category Name</label>
@@ -60,7 +60,7 @@ const CreateCategory = ({ isOpen, onClose }) => {
                 name="name"
                 value={categoryName}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-400"
                 required
               />
             </div>
@@ -71,13 +71,13 @@ const CreateCategory = ({ isOpen, onClose }) => {
                 name="imageUrl"
                 value={imageUrl}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-400"
                 required
               />
             </div>
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+              className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600"
             >
               Add Category
             </button>

@@ -24,7 +24,7 @@ const UserCategoryIndex = () => {
   });
 
   if (isLoading) {
-    return <div className='flex justify-center items-center'><div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:blue-violet-900"></div></div>;
+    return <div className='flex justify-center items-center'><div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:green-violet-900"></div></div>;
   }
 
   if (error) {
@@ -33,7 +33,7 @@ const UserCategoryIndex = () => {
 
   return (
     <div className='roboto-regular'>
-      <h1 className='text-center text-4xl text-blue-900 pt-16'>Category: {category}</h1>
+      <h1 className='text-center text-4xl text-green-900 pt-16'>Category: {category}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-12">
         {medicines.data.map(medicine => (
           <div key={medicine._id} className="border border-gray-200 rounded-lg overflow-hidden shadow-lg">

@@ -17,7 +17,7 @@ const Dashboard = () => {
     const navigate= useNavigate();
 
     if (isLoadingAdmin || isLoadingSeller) {
-        return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-blue-900"></div>;
+        return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-green-900"></div>;
     }
 
     const handleLogout = () => {
@@ -27,7 +27,7 @@ const Dashboard = () => {
       };
     return (
         <div className='flex'>
-            <div className="w-fit min-h-screen bg-blue-900 text-white pl-4 pt-4">
+            <div className="w-fit min-h-screen bg-green-900 text-white pl-4 pt-4">
                 <ul className='menu flex flex-col gap-8'>
                     {isAdmin && (
                         <>

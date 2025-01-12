@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 import { router } from './Routes/router';
 import AuthProvider from './providers/AuthProvider';
-import { ThemeProvider } from './Theme';
 import { ToastContainer } from 'react-toastify'
 
 
@@ -23,13 +22,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
       <RouterProvider router={router} />
       <ToastContainer />
 
 
 
-      </ThemeProvider>
       </QueryClientProvider>
 
 
