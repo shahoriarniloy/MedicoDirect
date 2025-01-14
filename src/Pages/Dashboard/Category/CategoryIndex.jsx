@@ -41,7 +41,7 @@ const CategoryIndex = () => {
     };
 
     return (
-        <div className=' '>
+        <div className=''>
             <Helmet>
                 <title>Categories</title>
             </Helmet>

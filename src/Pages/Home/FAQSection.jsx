@@ -1,8 +1,8 @@
 
 const FAQSection = () => {
   return (
-    <section className=" dark:text-gray-800 mt-12 mb-12">
-      <div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
+    <section className=" dark:text-gray-800 mt-12 mb-12  py-8 ">
+      <div className="container flex flex-col justify-center ">
         <h2 className="text-4xl text-green-600 font-semibold sm:text-3xl text-center">Frequently Asked Questions</h2>
         {/* <p className="mt-4 mb-8 dark:text-gray-600">Answers to commonly asked questions about MedicoDirect:</p> */}
         <div className="space-y-4">

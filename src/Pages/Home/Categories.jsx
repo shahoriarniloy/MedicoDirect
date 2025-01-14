@@ -28,8 +28,9 @@ const Categories = () => {
   }
 
   return (
-    <div className='roboto-regular mb-12' >
+    <div className='roboto-regular mb-12 ' >
       <h1 className=' text-4xl text-green-600 mt-12  font-bold mb-8 ml-2 text-center'>Categories</h1>
+      <p className='text-gray-700 text-lg leading-relaxed text-center z-0 px-6'>Our wide range of medicine categories is designed to meet your healthcare needs. From easy-to-use syrups and capsules for convenient dosing to specialized sprays, inhalers, and patches for targeted relief, we provide solutions for every requirement. Shop with confidence and find the right products to support your health and well-being—all in one place.</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-12">
         {categories.map(category => (
           <div key={category._id} className=" rounded-lg border-2 border-green-600 overflow-hidden shadow-lg">

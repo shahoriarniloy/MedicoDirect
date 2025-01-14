@@ -32,7 +32,7 @@ const UserCategoryIndex = () => {
   }
 
   return (
-    <div className='roboto-regular'>
+    <div className='roboto-regular min-h-2/3 py-12 lg:px-16 md:px-16 sm:px-4 px-2'>
       <h1 className='text-center text-4xl text-green-900 pt-16'>Category: {category}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-12">
         {medicines.data.map(medicine => (

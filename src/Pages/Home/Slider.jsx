@@ -78,14 +78,14 @@ const MedicineSlider = () => {
       }
     };
   return (
-    <div className='z-0'>
+    <div className='z-0 '>
       <h1 className='text-center text-4xl text-green-600 font-bold z-0'>Top Selling Medicines</h1>
-      <div className="flex flex-col md:flex-row items-center justify-between px-4 py-8 rounded-md z-0">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-6  py-8 rounded-md z-0">
         <div className="w-full md:w-1/3 text-center md:text-left mb-8 md:mb-0 z-0">
-          <h1 className="text-2xl font-bold text-green-800 mb-4 z-0">Explore Our Top Selling Medicines</h1>
-          <p className="text-gray-700 z-0">Discover the most trusted medicines handpicked by our experts. From everyday essentials to specialized treatments, we've got everything you need to stay healthy.</p>
+          <h1 className="text-2xl font-bold text-black mb-4 z-0 text-center">Explore Our Top Selling Medicines</h1>
+          <p className="text-gray-700 text-lg leading-relaxed text-center z-0">Discover the most trusted medicines handpicked by our experts. From everyday essentials to specialized treatments, we've got everything you need to stay healthy.</p>
         </div>
-        <div className="w-full md:w-2/3 p-6 z-0">
+        <div className="w-full lg:w-2/3 md:w-2/3 py-6 z-0 ">
         <Carousel
   swipeable
   draggable
@@ -109,7 +109,7 @@ const MedicineSlider = () => {
       <div
         key={index}
         className="relative bg-white p-6 rounded-xl min-h-[350px] w-64 hover:scale-105 z-0"
-        style={{ height: "400px" }} 
+        style={{ height: "400px", width:"99%", }} 
       >
         <h3 className="text-lg text-center text-green-700 font-semibold mb-2 z-0">
           {medicine.itemName}
@@ -156,8 +156,8 @@ const MedicineSlider = () => {
 
       <h1 className="text-4xl text-green-600 font-bold mt-12 mb-8 text-center z-0">Discounted Products</h1>
 
-      <div className="flex flex-col md:flex-row justify-between px-4 py-8 z-0 items-center">
-        <div className="w-full md:w-2/3 p-6 z-0">
+      <div className="flex flex-col md:flex-row justify-between  py-8 z-0 items-center">
+        <div className="w-full md:w-2/3 py-6 z-0">
         <Carousel
   swipeable
   draggable
@@ -181,7 +181,7 @@ const MedicineSlider = () => {
       <div
         key={index}
         className="relative bg-white py-12 px-2 rounded-xl min-h-[350px] w-64 hover:shadow-xl z-0 "
-        style={{ height: "450px" }} 
+        style={{ height: "450px", width:"99%", }} 
       >
         <h3 className="text-lg text-center text-green-700 font-semibold mb-2 z-0">
           {medicine.itemName}
@@ -229,9 +229,9 @@ const MedicineSlider = () => {
 
         </div>
         <div className="w-full md:w-1/3 mt-8 md:mt-0 px-6 z-0">
-          <h2 className="text-2xl font-semibold text-green-800 mb-4 text-center z-0">Explore Our Discounted Products</h2>
+          <h2 className="text-2xl font-semibold text-black mb-4 text-center z-0">Discover the Best Deals on Discounted Products</h2>
           <p className="text-gray-700 text-lg leading-relaxed text-center z-0">
-            Discover amazing discounts on your favorite medicines! We offer the best prices on essential healthcare products. Hurry up, the offer won't last forever. Shop now and enjoy big savings on top medicines.
+          Enjoy incredible discounts on your favorite medicines! Find the best deals on essential healthcare products. Don’t miss out—shop now and save big on top-quality medicines!
           </p>
         </div>
       </div>

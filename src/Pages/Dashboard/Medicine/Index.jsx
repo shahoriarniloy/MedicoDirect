@@ -99,71 +99,118 @@ const MedicinesIndex = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 roboto-regular">
-      <Helmet><title>Medicines</title></Helmet>
-      <h2 className="text-2xl font-bold mb-4 mt-16 text-center text-green-600">Medicines List</h2>
-      <table className="min-w-full bg-white border border-gray-200">
-        <thead>
-          <tr>
-            <th className="px-4 py-2 border-b">Product Name</th>
-            <th className="px-4 py-2 border-b">Image</th>
-            <th className="px-4 py-2 border-b"> Name</th>
-            <th className="px-4 py-2 border-b">Category</th>
-            <th className="px-4 py-2 border-b">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {medicines.map((medicine) => (
-            <tr key={medicine._id} className="text-center">
-              <td className="px-4 py-2 border-b">{medicine.itemName}</td>
-              <td className="px-4 py-2 border-b"><img src={medicine.image} style={{ height: '200px' ,width:'auto'}} alt="" /></td>
-              <td className="px-4 py-2 border-b">{medicine.itemGenericName}</td>
-              <td className="px-4 py-2 border-b">{medicine.category}</td>
-              <td className="px-4 py-2 border-b">
-                <button onClick={() => openModal(medicine._id)} className="text-green-500 hover:text-green-700 mx-2">
-                  <FontAwesomeIcon icon={faEye} />
-                </button>
-                <button 
-                  onClick={() => handleAddToCart(medicine)}
-                  className="text-green-500 hover:text-green-700 mx-2"
-                >
-                  <FontAwesomeIcon icon={faShoppingCart} />
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="container mx-auto p-4 roboto-regular lg:px-16 md:px-16">
+  <Helmet>
+    <title>Medicines</title>
+  </Helmet>
+  <h2 className="text-2xl font-bold mb-4 mt-16 text-center text-green-600">
+    Medicines List
+  </h2>
+  <table className="min-w-full bg-white border border-gray-200">
+    <thead>
+      <tr>
+        <th className="px-4 py-2 border-b">Product Name</th>
+        <th className="px-4 py-2 border-b">Image</th>
+        <th className="px-4 py-2 border-b hidden md:table-cell">Generic Name</th>
+        <th className="px-4 py-2 border-b hidden lg:table-cell">Category</th>
+        <th className="px-4 py-2 border-b">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {medicines.map((medicine) => (
+        <tr key={medicine._id} className="text-center">
+          <td className="px-4 py-2 border-b">{medicine.itemName}</td>
+          <td className="px-4 py-2 border-b">
+            <img
+              src={medicine.image}
+              style={{ height: '100px', width: 'auto' }}
+              alt={medicine.itemName}
+            />
+          </td>
+          <td className="px-4 py-2 border-b hidden md:table-cell">{medicine.itemGenericName}</td>
+          <td className="px-4 py-2 border-b hidden lg:table-cell">{medicine.category}</td>
+          <td className="px-4 py-2 border-b">
+            <button
+              onClick={() => openModal(medicine._id)}
+              className="text-green-500 hover:text-green-700 mx-2"
+            >
+              <FontAwesomeIcon icon={faEye} />
+            </button>
+            <button
+              onClick={() => handleAddToCart(medicine)}
+              className="text-green-500 hover:text-green-700 mx-2"
+            >
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
 
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        contentLabel="Medicine Details"
-        className="modal bg-white rounded-lg shadow-lg p-8 max-w-lg mx-auto mt-20 relative"
-        overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-50"
-      >
-        <button onClick={closeModal} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
-          <FontAwesomeIcon icon={faTimes} size="lg" />
+  <Modal
+    isOpen={isModalOpen}
+    onRequestClose={closeModal}
+    contentLabel="Medicine Details"
+    className="modal bg-white rounded-lg shadow-lg p-8 max-w-lg mx-auto mt-20 relative"
+    overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-50"
+  >
+    <button
+      onClick={closeModal}
+      className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+    >
+      <FontAwesomeIcon icon={faTimes} size="lg" />
+    </button>
+    {selectedMedicine && (
+      <div className="roboto-regular">
+        <h2 className="text-2xl font-bold mb-4">{selectedMedicine.itemName}</h2>
+        <img
+          src={selectedMedicine.image}
+          alt={selectedMedicine.itemName}
+          style={{ height: '100px', width: 'auto' }}
+          className="w-full h-auto mb-4"
+        />
+        <p>
+          <strong>Generic Name:</strong> {selectedMedicine.itemGenericName}
+        </p>
+        <p>
+          <strong>Short Description:</strong> {selectedMedicine.shortDescription}
+        </p>
+        <p>
+          <strong>Category:</strong> {selectedMedicine.category}
+        </p>
+        <p>
+          <strong>Company:</strong> {selectedMedicine.company}
+        </p>
+        <p>
+          <strong>Mass Unit:</strong> {selectedMedicine.massUnit}
+        </p>
+        <p>
+          <strong>Per Unit Price:</strong> {selectedMedicine.perUnitPrice}
+        </p>
+        <p>
+          <strong>Discount Percentage:</strong> {selectedMedicine.discountPercentage}
+        </p>
+        <p>
+          <strong>Seller Email:</strong> {selectedMedicine.sellerEmail}
+        </p>
+        <p>
+          <strong>Seller Name:</strong> {selectedMedicine.sellerName}
+        </p>
+        <p>
+          <strong>Price:</strong> {selectedMedicine.price}
+        </p>
+        <button
+          onClick={closeModal}
+          className="mt-4 px-4 py-2 bg-red-500 text-white rounded"
+        >
+          Close
         </button>
-        {selectedMedicine && (
-          <div className='roboto-regular'>
-            <h2 className="text-2xl font-bold mb-4">{selectedMedicine.itemName}</h2>
-            <img src={selectedMedicine.image} alt={selectedMedicine.itemName} style={{ height: '100px', width: 'auto' }} className="w-full h-auto mb-4" />
-            <p><strong>Item Generic Name:</strong> {selectedMedicine.itemGenericName}</p>
-            <p><strong>Short Description:</strong> {selectedMedicine.shortDescription}</p>
-            <p><strong>Category:</strong> {selectedMedicine.category}</p>
-            <p><strong>Company:</strong> {selectedMedicine.company}</p>
-            <p><strong>Mass Unit:</strong> {selectedMedicine.massUnit}</p>
-            <p><strong>Per Unit Price:</strong> {selectedMedicine.perUnitPrice}</p>
-            <p><strong>Discount Percentage:</strong> {selectedMedicine.discountPercentage}</p>
-            <p><strong>Seller Email:</strong> {selectedMedicine.sellerEmail}</p>
-            <p><strong>Seller Name:</strong> {selectedMedicine.sellerName}</p>
-            <p><strong>Price:</strong> {selectedMedicine.price}</p>
-            <button onClick={closeModal} className="mt-4 px-4 py-2 bg-red-500 text-white rounded">Close</button>
-          </div>
-        )}
-      </Modal>
-    </div>
+      </div>
+    )}
+  </Modal>
+</div>
+
   );
 };
 

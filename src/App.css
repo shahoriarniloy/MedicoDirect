@@ -87,3 +87,11 @@
   border-radius: 5px;
   cursor: grab;
 }
+.bg-gradient-with-image {
+  background: 
+    linear-gradient(to right, #e8f5e9, #f1f8e9), /* Gradient */
+    url('https://i.ibb.co/CMPhF0y/various-pills-wooden-spoon.png'); /* Image */
+  background-size: cover; /* Ensure the image covers the entire area */
+  background-repeat: no-repeat; /* Prevent repeating */
+  background-position: center; /* Center the image */
+}
